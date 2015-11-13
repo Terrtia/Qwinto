@@ -1,0 +1,31 @@
+@startuml
+
+class Partie{
+#int tour
++bool fin()
++int gagnant()
++ajout joueur(Utilisateur)
+}
+
+class Feuille{
+#nombre[3][12]
+#int nombreCroix 0, 1, 2, 3, 4
+#bool aJoue
+#int ordre
+
++int score()
++bool fin()
++placer(i,j,n)
++bool case(i,j)
++bool valable(i,j,n)
+}
+
+class Utilisateur{
+#password
+#login
+}
+
+Partie "1"--"*" Feuille
+Utilisateur -- Feuille
+
+@enduml
