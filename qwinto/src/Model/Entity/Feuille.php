@@ -80,7 +80,7 @@ class Feuille extends Entity {
         switch ($i) {
             case 0: 
                 /* premiere ligne */
-                for($num = 2;$num < 11;$num++) {
+                for($num = 2;$num < 12;$num++) {
                     if($nombres[0][$num] == 0) {
                         $estPleine = false;
                     }
@@ -88,7 +88,7 @@ class Feuille extends Entity {
                 break;
             case 1:
                 /* deuxieme ligne */
-                for($num = 1;$num < 10; $num++) {
+                for($num = 1;$num < 11; $num++) {
                     if($nombres[1][$num] == 0) {
                         $estPleine = false;
                     }                   
@@ -96,7 +96,7 @@ class Feuille extends Entity {
                 break;
             case 2:
                 /* troisieme ligne */
-                for($num = 0;$num < 9; $num++) {
+                for($num = 0;$num < 10; $num++) {
                     if($nombres[2][$num] == 0) {
                         $estPleine = false;
                     }                   
@@ -108,6 +108,21 @@ class Feuille extends Entity {
                 break;
         }
         return $estPleine;
+    }
+    
+    /* Retourne le score de la premiere ligne */
+    function scoreLigne1() {
+        $score = 0;
+        if(lignePleine(0)) {
+            $score = $nombres[0][11];   
+        }else {
+            for($num = 2;$num < 12;$num++) {
+                if(estCase($nombres[0][$num]) && $nombres[0][$num] != 0) {
+                    $score++;
+                }
+            }
+        }
+        return $score;
     }
     
     
