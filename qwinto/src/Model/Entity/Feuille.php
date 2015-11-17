@@ -17,7 +17,11 @@ class Feuille extends Entity {
     private $ordre;
     
     public function Feuille() {
-        $nombres = array(array());
+        $nombres = array(
+            array(-1,-1, 0,0,0,-1,0,0,0,0,0,0),
+            array(-1,0,0,0,0,0, -1,0,0,0,0,-1),
+            array(0,0,0,0,-1,0,0,0,0,0,-1,-1)
+            );
         $nombreCroix = 0;
         $ajoue = FALSE;
         $ordre = -1;
