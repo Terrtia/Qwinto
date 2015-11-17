@@ -101,5 +101,42 @@ class Feuille extends Entity {
         return $estPleine;
     }
     
+    /* Retourne le score de la ligne numero i */
+    function scoreLigne($i) {
+        $score = 0;
+        switch ($i) {
+            case 0: 
+                /* premiere ligne */
+                for($num = 2;$num < 11;$num++) {
+                    if($nombres[0][$num] == 0) {
+                        $score = false;
+                    }
+                }
+                break;
+            case 1:
+                /* deuxieme ligne */
+                for($num = 1;$num < 10; $num++) {
+                    if($nombres[1][$num] == 0) {
+                        $score = false;
+                    }                   
+                }
+                break;
+            case 2:
+                /* troisieme ligne */
+                for($num = 0;$num < 9; $num++) {
+                    if($nombres[2][$num] == 0) {
+                        $score = false;
+                    }                   
+                }
+                break;
+            default:
+                /* cas de numero de ligne incorrect */
+                $score = 0;
+                break;
+        }
+        return $score;
+        
+    }
+    
     
 }
