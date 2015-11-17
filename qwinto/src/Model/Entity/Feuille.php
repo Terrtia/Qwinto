@@ -31,7 +31,23 @@ class Feuille extends Entity {
     
     /* Indique si une feuille est achevée : 2 lignes pleines ou 4 croix */
     public function fin() {
-        
+        /* Fin du jeu si on a 4 croix */
+        if($nbCroix == 4) {
+            return true;
+        }
+        /* Calcul du nombre de lignes pleines */
+        $nbLignesPleines = 0;
+        for($i = 0;$i < 3;$i++) {
+            if(lignePleine($i)) {
+                $nbLignesPleines++;
+            }
+        }
+        /* Fin du jeu si au moins 2 lignes sont pleines */
+        if($nbLignesPleines >= 2) {
+            return true;
+        }
+        /* Jeu non fini */
+        return false;
     }
     
     /* Place la valeur n aux coordonnées (i,j) */
@@ -49,9 +65,40 @@ class Feuille extends Entity {
         
     }
     
-    
-    public function lignePleine($l) {
-        
+    /* Indique si la ligne numero i (en partant de 0) est pleine */
+    public function lignePleine($i) {
+        $estPleine = true;
+        switch ($i) {
+            case 0: 
+                /* premiere ligne */
+                for($num = 2;$num < 11;$num++) {
+                    if($nombres[0][$num] == 0) {
+                        $estPleine = false;
+                    }
+                }
+                break;
+            case 1:
+                /* deuxieme ligne */
+                for($num = 1;$num < 10; $num++) {
+                    if($nombres[1][$num] == 0) {
+                        $estPleine = false;
+                    }                   
+                }
+                break;
+            case 2:
+                /* troisieme ligne */
+                for($num = 0;$num < 9; $num++) {
+                    if($nombres[2][$num] == 0) {
+                        $estPleine = false;
+                    }                   
+                }
+                break;
+            default:
+                /* cas de numero de ligne incorrect */
+                $estPleine = false;
+                break;
+        }
+        return $estPleine;
     }
     
     
