@@ -17,14 +17,14 @@ class Feuille extends Entity {
     private $ordre;
     
     public function Feuille() {
-        $nombres = array(
+        $this->$nombres = array(
             array(-1,-1, 0,0,0,-1,0,0,0,0,0,0),
             array(-1,0,0,0,0,0, -1,0,0,0,0,-1),
             array(0,0,0,0,-1,0,0,0,0,0,-1,-1)
             );
-        $nombreCroix = 0;
-        $ajoue = FALSE;
-        $ordre = -1;
+            $this->$nombreCroix = 0;
+            $this->$ajoue = FALSE;
+            $this->$ordre = -1;
     }
     
 
@@ -61,7 +61,12 @@ class Feuille extends Entity {
     
     /* Indique si c'est une case (à cause du décalage des lignes) */
     public function estCase($i, $j) {
-        
+        if($nombre[i][j] != -1){
+            return TRUE;
+        }
+        else {
+            return FALSE;
+         }
     }
     
     /* Indique si le placement de n aux coordonnées (i,j) est valable */
