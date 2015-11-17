@@ -11,11 +11,22 @@ use Cake\ORM\Entity;
 
 class Feuille extends Entity {
     
-    private $nombre;
+    private $nombre = array(array());
+    private $nombreCroix;
+    private $aJoue;
+    private $ordre;
     
-    public function score()
-    {
+    public function score() {
         
     }
+    
+    public function fin() {
+        
+    }
+    
+    public function placer($i, $j, $n) {
+        
+    }
+    
     
 }
