@@ -11,10 +11,17 @@ use Cake\ORM\Entity;
 
 class Feuille extends Entity {
     
-    private $nombre = array(array());
+    private $nombres;
     private $nombreCroix;
     private $aJoue;
     private $ordre;
+    
+    public function Feuille() {
+        $nombres = array(array());
+        $nombreCroix = 0;
+        $ajoue = FALSE;
+        $ordre = -1;
+    }
     
     public function score() {
         
