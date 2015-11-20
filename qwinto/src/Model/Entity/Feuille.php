@@ -25,18 +25,23 @@ class Feuille extends Entity {
             $this->$nombreCroix = 0;
             $this->$ajoue = FALSE;
             $this->$ordre = \Cake\ORM\TableRegistry::get('Feuilles');
+
+            $this->$aJoue = FALSE;
+            $this->$ordre = -1;
+
     }
     
 
     /* Retourne le score de la feuille */
     public function score() {
-        
+        $score = 0;
+        return $score - $this->$nombreCroix * 5;
     }
     
     /* Indique si une feuille est achevée : 2 lignes pleines ou 4 croix */
     public function fin() {
         /* Fin du jeu si on a 4 croix */
-        if($nbCroix == 4) {
+        if($this->$nombreCroix == 4) {
             return true;
         }
         /* Calcul du nombre de lignes pleines */
@@ -61,7 +66,7 @@ class Feuille extends Entity {
     
     /* Indique si c'est une case (à cause du décalage des lignes) */
     public function estCase($i, $j) {
-        if($nombre[i][j] != -1){
+        if($this->$nombre[i][j] != -1){
             return TRUE;
         }
         else {
@@ -81,7 +86,7 @@ class Feuille extends Entity {
             case 0: 
                 /* premiere ligne */
                 for($num = 2;$num < 12;$num++) {
-                    if($nombres[0][$num] == 0) {
+                    if($this->$nombres[0][$num] == 0 && estCase(0, $num)) {
                         $estPleine = false;
                     }
                 }
@@ -89,7 +94,7 @@ class Feuille extends Entity {
             case 1:
                 /* deuxieme ligne */
                 for($num = 1;$num < 11; $num++) {
-                    if($nombres[1][$num] == 0) {
+                    if($this->$nombres[1][$num] == 0 && estCase(1, $num)) {
                         $estPleine = false;
                     }                   
                 }
@@ -97,7 +102,7 @@ class Feuille extends Entity {
             case 2:
                 /* troisieme ligne */
                 for($num = 0;$num < 10; $num++) {
-                    if($nombres[2][$num] == 0) {
+                    if($this->$nombres[2][$num] == 0 && estCase(2, $num)) {
                         $estPleine = false;
                     }                   
                 }
@@ -114,16 +119,48 @@ class Feuille extends Entity {
     function scoreLigne1() {
         $score = 0;
         if(lignePleine(0)) {
-            $score = $nombres[0][11];   
+            $score = $this->$nombres[0][11];   
         }else {
             for($num = 2;$num < 12;$num++) {
-                if(estCase($nombres[0][$num]) && $nombres[0][$num] != 0) {
+                if(estCase(0,$num) && $this->$nombres[0][$num] != 0) {
                     $score++;
                 }
             }
         }
         return $score;
     }
+    
+    /* Retourne le score de la deuxieme ligne */
+    function scoreLigne2() {
+        $score = 0;
+        if(lignePleine(1)) {
+            $score = $this->$nombres[1][10];   
+        }else {
+            for($num = 1;$num < 11;$num++) {
+                if(estCase(1,$num) && $this->$nombres[1][$num] != 0) {
+                    $score++;
+                }
+            }
+        }
+        return $score;
+    }
+    
+    /* Retourne le score de la troisieme ligne */
+    function scoreLigne3() {
+        $score = 0;
+        if(lignePleine(2)) {
+            $score = $this->$nombres[2][9];   
+        }else {
+            for($num = 0;$num < 10;$num++) {
+                if(estCase(2,$num) && $this->$nombres[2][$num] != 0) {
+                    $score++;
+                }
+            }
+        }
+        return $score;
+    }
+    
+    
     
     
 }
