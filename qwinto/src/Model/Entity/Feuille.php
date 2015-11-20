@@ -37,7 +37,10 @@ class Feuille extends Entity {
     /* Retourne le score de la feuille */
     public function score() {
         $score = 0;
-        return $score - $this->nombreCroix * 5;
+        return $score - $this->$nombreCroix * 5
+                + $this->scoreLigne1() + $this->scoreLigne2() + $this->scoreLigne3()
+                + $this->scoreHexagone1() + $this->scoreHexagone2() + $this->scoreHexagone3()
+                + $this->scoreHexagone4() + $this->scoreHexagone5();
     }
     
     /* Indique si une feuille est achevée : 2 lignes pleines ou 4 croix */
@@ -180,5 +183,44 @@ class Feuille extends Entity {
         }
     }
     
+    function scoreHexagone1() {
+        $score = 0;
+        if($this->nombre[0][3] !=0 && $this->nombre[1][3] !=0 && $this->nombres[2][3] !=0){
+            $score = $this->nombres[0][3];
+        }
+        return $score;
+    }
+    
+    function scoreHexagone2() {
+        $score = 0;
+        if($this->nombre[0][7] !=0 && $this->nombre[1][7] !=0 && $this->nombres[2][7] !=0){
+            $score = $this->nombres[0][7];
+        }
+        return $score;
+    }
+    
+    function scoreHexagone3() {
+        $score = 0;
+        if($this->nombre[0][8] !=0 && $this->nombre[1][8] !=0 && $this->nombres[2][8] !=0){
+            $score = $this->nombres[2][8];
+        }
+        return $score;
+    }
+    
+    function scoreHexagone4() {
+        $score = 0;
+        if($this->nombre[0][2] !=0 && $this->nombre[1][2] !=0 && $this->nombres[2][2] !=0){
+            $score = $this->nombres[2][2];
+        }
+        return $score;
+    }
+    
+    function scoreHexagone5() {
+        $score = 0;
+        if($this->nombre[0][9] !=0 && $this->nombre[1][9] !=0 && $this->nombres[2][9] !=0){
+            $score = $this->nombres[2][9];
+        }
+        return $score;
+    }
     
 }
