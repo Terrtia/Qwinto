@@ -24,7 +24,7 @@ class Feuille extends Entity {
             );
             $this->$nombreCroix = 0;
             $this->$ajoue = FALSE;
-            $this->$ordre = -1;
+            $this->$ordre = \Cake\ORM\TableRegistry::get('Feuilles');
     }
     
 
