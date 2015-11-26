@@ -7,3 +7,101 @@
 2015-11-26 09:46:34 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2015-11-26 09:46:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
 2015-11-26 09:47:09 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:24:04 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:26:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:26:56 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:27:02 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:27:02 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:27:03 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:27:08 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:27:08 Error: [PDOException] SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '0' for key 'PRIMARY'
+Request URL: /nombres/add
+Stack Trace:
+#0 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Database/Statement/MysqlStatement.php(36): PDOStatement->execute(NULL)
+#1 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Database/Connection.php(270): Cake\Database\Statement\MysqlStatement->execute()
+#2 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Database/Query.php(174): Cake\Database\Connection->run(Object(Cake\ORM\Query))
+#3 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1530): Cake\Database\Query->execute()
+#4 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1446): Cake\ORM\Table->_insert(Object(App\Model\Entity\Nombre), Array)
+#5 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1377): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Nombre), Object(ArrayObject))
+#6 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Database/Connection.php(557): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#7 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1378): Cake\Database\Connection->transactional(Object(Closure))
+#8 /home/aurelien/Documents/Qwinto/qwinto/src/Controller/NombresController.php(51): Cake\ORM\Table->save(Object(App\Model\Entity\Nombre))
+#9 [internal function]: App\Controller\NombresController->add()
+#10 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#11 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#12 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#13 /home/aurelien/Documents/Qwinto/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#14 {main}
+
+
+2015-11-26 10:33:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:33:39 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:33:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:33:46 Error: [InvalidArgumentException] Unknown type ""
+Request URL: /nombres/add
+Stack Trace:
+#0 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1566): Cake\Database\Type::build(NULL)
+#1 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1499): Cake\ORM\Table->_newId(Array)
+#2 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1446): Cake\ORM\Table->_insert(Object(App\Model\Entity\Nombre), Array)
+#3 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1377): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Nombre), Object(ArrayObject))
+#4 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Database/Connection.php(557): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#5 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1378): Cake\Database\Connection->transactional(Object(Closure))
+#6 /home/aurelien/Documents/Qwinto/qwinto/src/Controller/NombresController.php(51): Cake\ORM\Table->save(Object(App\Model\Entity\Nombre))
+#7 [internal function]: App\Controller\NombresController->add()
+#8 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#9 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#10 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#11 /home/aurelien/Documents/Qwinto/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2015-11-26 10:33:57 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:34:04 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:34:04 Error: [InvalidArgumentException] Unknown type ""
+Request URL: /nombres/add
+Stack Trace:
+#0 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1566): Cake\Database\Type::build(NULL)
+#1 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1499): Cake\ORM\Table->_newId(Array)
+#2 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1446): Cake\ORM\Table->_insert(Object(App\Model\Entity\Nombre), Array)
+#3 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1377): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Nombre), Object(ArrayObject))
+#4 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Database/Connection.php(557): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#5 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1378): Cake\Database\Connection->transactional(Object(Closure))
+#6 /home/aurelien/Documents/Qwinto/qwinto/src/Controller/NombresController.php(51): Cake\ORM\Table->save(Object(App\Model\Entity\Nombre))
+#7 [internal function]: App\Controller\NombresController->add()
+#8 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#9 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#10 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#11 /home/aurelien/Documents/Qwinto/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2015-11-26 10:34:31 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:34:48 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:34:49 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:34:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:34:54 Error: [InvalidArgumentException] Unknown type ""
+Request URL: /nombres/add
+Stack Trace:
+#0 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1566): Cake\Database\Type::build(NULL)
+#1 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1499): Cake\ORM\Table->_newId(Array)
+#2 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1446): Cake\ORM\Table->_insert(Object(App\Model\Entity\Nombre), Array)
+#3 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1377): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Nombre), Object(ArrayObject))
+#4 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Database/Connection.php(557): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#5 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1378): Cake\Database\Connection->transactional(Object(Closure))
+#6 /home/aurelien/Documents/Qwinto/qwinto/src/Controller/NombresController.php(51): Cake\ORM\Table->save(Object(App\Model\Entity\Nombre))
+#7 [internal function]: App\Controller\NombresController->add()
+#8 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#9 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#10 /home/aurelien/Documents/Qwinto/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#11 /home/aurelien/Documents/Qwinto/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#12 {main}
+
+
+2015-11-26 10:36:36 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:36:41 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:36:43 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:36:50 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:36:50 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:36:52 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:36:57 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-26 10:36:57 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
