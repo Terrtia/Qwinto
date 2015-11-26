@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property int $NOMBRES_CROIX
  * @property bool $AJOUTER
  * @property int $ORDRE
+ * @property int $NUM_PARTY
+ * @property int $ID_USER
  */
 class Feuille extends Entity
 {

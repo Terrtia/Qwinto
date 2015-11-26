@@ -19,6 +19,8 @@
             echo $this->Form->input('NOMBRES_CROIX');
             echo $this->Form->input('AJOUTER');
             echo $this->Form->input('ORDRE');
+            echo $this->Form->input('NUM_PARTY');
+            echo $this->Form->input('ID_USER');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

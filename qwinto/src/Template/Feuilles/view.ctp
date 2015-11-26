@@ -27,6 +27,14 @@
             <td><?= $this->Number->format($feuille->ORDRE) ?></td>
         </tr>
         <tr>
+            <th><?= __('NUM PARTY') ?></th>
+            <td><?= $this->Number->format($feuille->NUM_PARTY) ?></td>
+        </tr>
+        <tr>
+            <th><?= __('ID USER') ?></th>
+            <td><?= $this->Number->format($feuille->ID_USER) ?></td>
+        </tr>
+        <tr>
             <th><?= __('AJOUTER') ?></th>
             <td><?= $feuille->AJOUTER ? __('Yes') : __('No'); ?></td>
          </tr>

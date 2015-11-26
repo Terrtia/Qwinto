@@ -62,6 +62,16 @@ class FeuillesTable extends Table
             ->requirePresence('ORDRE', 'create')
             ->notEmpty('ORDRE');
 
+        $validator
+            ->add('NUM_PARTY', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('NUM_PARTY', 'create')
+            ->notEmpty('NUM_PARTY');
+
+        $validator
+            ->add('ID_USER', 'valid', ['rule' => 'numeric'])
+            ->requirePresence('ID_USER', 'create')
+            ->notEmpty('ID_USER');
+
         return $validator;
     }
 }

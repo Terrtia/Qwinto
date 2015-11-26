@@ -14,6 +14,8 @@
                 <th><?= $this->Paginator->sort('NOMBRES_CROIX') ?></th>
                 <th><?= $this->Paginator->sort('AJOUTER') ?></th>
                 <th><?= $this->Paginator->sort('ORDRE') ?></th>
+                <th><?= $this->Paginator->sort('NUM_PARTY') ?></th>
+                <th><?= $this->Paginator->sort('ID_USER') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
             </tr>
         </thead>
@@ -25,6 +27,8 @@
                 <td><?= $this->Number->format($feuille->NOMBRES_CROIX) ?></td>
                 <td><?= h($feuille->AJOUTER) ?></td>
                 <td><?= $this->Number->format($feuille->ORDRE) ?></td>
+                <td><?= $this->Number->format($feuille->NUM_PARTY) ?></td>
+                <td><?= $this->Number->format($feuille->ID_USER) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $feuille->ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $feuille->ID]) ?>
