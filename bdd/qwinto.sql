@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 17 Novembre 2015 à 17:48
+-- Généré le :  Ven 20 Novembre 2015 à 15:41
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -32,8 +32,12 @@ CREATE TABLE IF NOT EXISTS `feuilles` (
   `NOMBRES_CROIX` int(11) NOT NULL,
   `AJOUTER` tinyint(1) NOT NULL,
   `ORDRE` int(11) NOT NULL,
+  `NUM_PARTY` int(11) NOT NULL,
+  `ID_USER` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
-  KEY `NOMBRES_ID` (`NOMBRES_ID`)
+  KEY `NOMBRES_ID` (`NOMBRES_ID`),
+  KEY `NUM_PARTY` (`NUM_PARTY`),
+  KEY `ID_USER` (`ID_USER`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -50,6 +54,36 @@ CREATE TABLE IF NOT EXISTS `nombres` (
   PRIMARY KEY (`NOMBRES_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `parties`
+--
+
+CREATE TABLE IF NOT EXISTS `parties` (
+  `ID` int(11) NOT NULL,
+  `TOUR` int(11) NOT NULL,
+  `NUM_FEUILLES` int(11) NOT NULL,
+  PRIMARY KEY (`ID`,`NUM_FEUILLES`),
+  KEY `NUM_FEUILLES` (`NUM_FEUILLES`),
+  KEY `ID` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `LOGIN` varchar(10) NOT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `NUM_FEUILLES` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `NUM_FEUILLES` (`NUM_FEUILLES`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 --
 -- Contraintes pour les tables exportées
 --
@@ -58,7 +92,21 @@ CREATE TABLE IF NOT EXISTS `nombres` (
 -- Contraintes pour la table `feuilles`
 --
 ALTER TABLE `feuilles`
+  ADD CONSTRAINT `feuilles_ibfk_2` FOREIGN KEY (`ID_USER`) REFERENCES `users` (`ID`),
+  ADD CONSTRAINT `feuilles_ibfk_1` FOREIGN KEY (`NUM_PARTY`) REFERENCES `feuilles` (`ID`),
   ADD CONSTRAINT `Nombres_Tableau` FOREIGN KEY (`NOMBRES_ID`) REFERENCES `nombres` (`NOMBRES_ID`);
+
+--
+-- Contraintes pour la table `parties`
+--
+ALTER TABLE `parties`
+  ADD CONSTRAINT `parties_ibfk_1` FOREIGN KEY (`NUM_FEUILLES`) REFERENCES `feuilles` (`ID`);
+
+--
+-- Contraintes pour la table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`NUM_FEUILLES`) REFERENCES `feuilles` (`ID`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
