@@ -17,15 +17,15 @@ class PartiesFixture extends TestFixture
      */
     // @codingStandardsIgnoreStart
     public $fields = [
-        'ID' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'ID' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'TOUR' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
-        'NUM_FEUILLES' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
+        'NUM_FEUILLES' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => true, 'default' => null, 'comment' => '', 'precision' => null, 'autoIncrement' => null],
         '_indexes' => [
             'NUM_FEUILLES' => ['type' => 'index', 'columns' => ['NUM_FEUILLES'], 'length' => []],
             'ID' => ['type' => 'index', 'columns' => ['ID'], 'length' => []],
         ],
         '_constraints' => [
-            'primary' => ['type' => 'primary', 'columns' => ['ID', 'NUM_FEUILLES'], 'length' => []],
+            'primary' => ['type' => 'primary', 'columns' => ['ID'], 'length' => []],
             'parties_ibfk_1' => ['type' => 'foreign', 'columns' => ['NUM_FEUILLES'], 'references' => ['feuilles', 'ID'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [

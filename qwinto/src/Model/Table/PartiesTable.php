@@ -49,7 +49,7 @@ class PartiesTable extends Table
 
         $validator
             ->add('NUM_FEUILLES', 'valid', ['rule' => 'numeric'])
-            ->allowEmpty('NUM_FEUILLES', 'create');
+            ->allowEmpty('NUM_FEUILLES');
 
         return $validator;
     }

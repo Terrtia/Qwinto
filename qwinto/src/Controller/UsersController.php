@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\ORM\TableRegistry;
 /**
  * Users Controller
  *
@@ -45,6 +45,18 @@ class UsersController extends AppController
      */
     public function add()
     {
+        
+// Dans un controller ou dans une méthode table.
+         $feuilles = TableRegistry::get('feuilles');
+         $query = $feuilles->find('list')
+         ->select(['ID']);
+
+      //  $this->set()
+
+         foreach ($query as $user) {
+          echo $user. '<br />';
+            }
+
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             $user = $this->Users->patchEntity($user, $this->request->data);

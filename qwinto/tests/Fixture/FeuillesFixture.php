@@ -31,9 +31,9 @@ class FeuillesFixture extends TestFixture
         ],
         '_constraints' => [
             'primary' => ['type' => 'primary', 'columns' => ['ID'], 'length' => []],
-            'feuilles_ibfk_2' => ['type' => 'foreign', 'columns' => ['ID_USER'], 'references' => ['users', 'ID'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'feuilles_ibfk_3' => ['type' => 'foreign', 'columns' => ['NOMBRES_ID'], 'references' => ['nombres', 'NOMBRES_ID'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
             'feuilles_ibfk_1' => ['type' => 'foreign', 'columns' => ['NUM_PARTY'], 'references' => ['feuilles', 'ID'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
-            'Nombres_Tableau' => ['type' => 'foreign', 'columns' => ['NOMBRES_ID'], 'references' => ['nombres', 'NOMBRES_ID'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
+            'feuilles_ibfk_2' => ['type' => 'foreign', 'columns' => ['ID_USER'], 'references' => ['users', 'ID'], 'update' => 'restrict', 'delete' => 'restrict', 'length' => []],
         ],
         '_options' => [
             'engine' => 'InnoDB',

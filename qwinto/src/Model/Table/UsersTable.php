@@ -27,6 +27,7 @@ class UsersTable extends Table
         $this->table('users');
         $this->displayField('ID');
         $this->primaryKey('ID');
+        $this->hasOne('feuilles');
 
     }
 
@@ -52,8 +53,7 @@ class UsersTable extends Table
 
         $validator
             ->add('NUM_FEUILLES', 'valid', ['rule' => 'numeric'])
-            ->requirePresence('NUM_FEUILLES', 'create')
-            ->notEmpty('NUM_FEUILLES');
+            ->allowEmpty('NUM_FEUILLES');
 
         return $validator;
     }
