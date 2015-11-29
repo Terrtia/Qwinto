@@ -1,0 +1,100 @@
+2015-11-29 13:37:52 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:40:57 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:42:21 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:42:28 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:42:42 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:42:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:42:48 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:42:48 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:09 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:20 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:23 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:37 Error: [Cake\Datasource\Exception\InvalidPrimaryKeyException] Record not found in table "nombres" with primary key ['7']
+Request URL: /nombres/view/7
+Stack Trace:
+#0 /home/aurelien/qwinto/src/Controller/NombresController.php(36): Cake\ORM\Table->get('7', Array)
+#1 [internal function]: App\Controller\NombresController->view('7')
+#2 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#3 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#4 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#5 /home/aurelien/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#6 {main}
+
+
+2015-11-29 13:43:42 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:44 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:44 Error: [Cake\Datasource\Exception\InvalidPrimaryKeyException] Record not found in table "nombres" with primary key ['7']
+Request URL: /nombres/view/7
+Stack Trace:
+#0 /home/aurelien/qwinto/src/Controller/NombresController.php(36): Cake\ORM\Table->get('7', Array)
+#1 [internal function]: App\Controller\NombresController->view('7')
+#2 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#3 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#4 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#5 /home/aurelien/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#6 {main}
+
+
+2015-11-29 13:43:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:46 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:43:46 Error: [Cake\Datasource\Exception\InvalidPrimaryKeyException] Record not found in table "nombres" with primary key ['7']
+Request URL: /nombres/edit/7
+Stack Trace:
+#0 /home/aurelien/qwinto/src/Controller/NombresController.php(73): Cake\ORM\Table->get('7', Array)
+#1 [internal function]: App\Controller\NombresController->edit('7')
+#2 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#3 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#4 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#5 /home/aurelien/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#6 {main}
+
+
+2015-11-29 13:43:49 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:05 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:18 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:33 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:37 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:40 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:46 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:46 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:55 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:44:55 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:45:03 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:45:04 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:45:10 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:45:10 Error: [RuntimeException] Cannot insert row, some of the primary key values are missing. Got (, , ), expecting (FEUILLE_ID, LIGNE, COLONNE)
+Request URL: /nombres/add
+Stack Trace:
+#0 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1446): Cake\ORM\Table->_insert(Object(App\Model\Entity\Nombre), Array)
+#1 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1377): Cake\ORM\Table->_processSave(Object(App\Model\Entity\Nombre), Object(ArrayObject))
+#2 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Database/Connection.php(557): Cake\ORM\Table->Cake\ORM\{closure}(Object(Cake\Database\Connection))
+#3 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/ORM/Table.php(1378): Cake\Database\Connection->transactional(Object(Closure))
+#4 /home/aurelien/qwinto/src/Controller/NombresController.php(51): Cake\ORM\Table->save(Object(App\Model\Entity\Nombre))
+#5 [internal function]: App\Controller\NombresController->add()
+#6 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#7 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#8 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#9 /home/aurelien/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#10 {main}
+
+
+2015-11-29 13:45:15 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:45:27 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:46:45 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:46:53 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:46:55 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:46:55 Error: [Cake\Datasource\Exception\InvalidPrimaryKeyException] Record not found in table "nombres" with primary key ['7']
+Request URL: /nombres/view/7
+Stack Trace:
+#0 /home/aurelien/qwinto/src/Controller/NombresController.php(36): Cake\ORM\Table->get('7', Array)
+#1 [internal function]: App\Controller\NombresController->view('7')
+#2 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Controller/Controller.php(429): call_user_func_array(Array, Array)
+#3 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(114): Cake\Controller\Controller->invokeAction()
+#4 /home/aurelien/qwinto/vendor/cakephp/cakephp/src/Routing/Dispatcher.php(87): Cake\Routing\Dispatcher->_invoke(Object(App\Controller\NombresController))
+#5 /home/aurelien/qwinto/webroot/index.php(37): Cake\Routing\Dispatcher->dispatch(Object(Cake\Network\Request), Object(Cake\Network\Response))
+#6 {main}
+
+
+2015-11-29 13:59:54 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2015-11-29 13:59:55 Warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
