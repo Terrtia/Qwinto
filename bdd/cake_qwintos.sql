@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Dim 29 Novembre 2015 à 14:39
+-- Généré le: Dim 29 Novembre 2015 à 18:07
 -- Version du serveur: 5.5.46-0ubuntu0.14.04.2
 -- Version de PHP: 5.5.9-1ubuntu4.14
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `test_qwintos`
+-- Base de données: `cake_qwintos`
 --
 
 -- --------------------------------------------------------
@@ -36,14 +36,14 @@ CREATE TABLE IF NOT EXISTS `feuilles` (
   PRIMARY KEY (`ID`),
   KEY `NUM_PARTY` (`NUM_PARTY`),
   KEY `ID_USER` (`USER_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `feuilles`
 --
 
 INSERT INTO `feuilles` (`ID`, `NOMBRES_CROIX`, `AJOUTER`, `ORDRE`, `NUM_PARTY`, `USER_ID`) VALUES
-(7, 1, 0, 2, 4, 6);
+(9, 0, 0, 2, 6, 8);
 
 -- --------------------------------------------------------
 
@@ -52,19 +52,21 @@ INSERT INTO `feuilles` (`ID`, `NOMBRES_CROIX`, `AJOUTER`, `ORDRE`, `NUM_PARTY`, 
 --
 
 CREATE TABLE IF NOT EXISTS `nombres` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
   `FEUILLE_ID` int(11) NOT NULL,
-  `LIGNE` int(11) NOT NULL,
   `COLONNE` int(11) NOT NULL,
+  `LIGNE` int(11) NOT NULL,
   `VAL` int(11) DEFAULT NULL,
-  PRIMARY KEY (`FEUILLE_ID`,`LIGNE`,`COLONNE`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`ID`),
+  KEY `FEUILLE_ID` (`FEUILLE_ID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `nombres`
 --
 
-INSERT INTO `nombres` (`FEUILLE_ID`, `LIGNE`, `COLONNE`, `VAL`) VALUES
-(7, 0, 1, 2);
+INSERT INTO `nombres` (`ID`, `FEUILLE_ID`, `COLONNE`, `LIGNE`, `VAL`) VALUES
+(1, 9, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -77,14 +79,16 @@ CREATE TABLE IF NOT EXISTS `parties` (
   `TOUR` int(11) NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `ID` (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `parties`
 --
 
 INSERT INTO `parties` (`ID`, `TOUR`) VALUES
-(4, 1);
+(4, 1),
+(5, 2),
+(6, 5);
 
 -- --------------------------------------------------------
 
@@ -97,14 +101,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `LOGIN` varchar(10) NOT NULL,
   `PASSWORD` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `users`
 --
 
 INSERT INTO `users` (`ID`, `LOGIN`, `PASSWORD`) VALUES
-(6, 'test', 'secret');
+(6, 'test', 'secret'),
+(7, 'test2', 'refef'),
+(8, 'super_user', 'ssssss');
 
 --
 -- Contraintes pour les tables exportées
