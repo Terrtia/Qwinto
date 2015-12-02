@@ -31,4 +31,36 @@
             <td><?= $this->Number->format($feuille->USER_ID) ?></td>
         </tr>
     </table>
+
+	<table BORDER = 2 bgcolor='RED'>
+		<tr bgcolor = 'BLUE'>
+			<?php
+			for($i=0;$i<3;$i++){
+				echo'<td>';
+					echo $tableau[$i];
+				echo'</td>';
+			}
+			?>
+		</tr>
+
+		<tr bgcolor = 'RED'>
+			<?php
+			for($i=0;$i<3;$i++){
+				echo'<td>';
+					echo $tableau1[$i];
+				echo'</td>';
+			}
+			?>
+		</tr>
+		
+		<tr bgcolor = 'GREEN'>
+			<?php
+			for($i=0;$i<3;$i++){
+				echo'<td>';
+					echo $tableau2[$i];
+				echo'</td>';
+			}
+			?>
+		</tr>	
+	</table>	
 </div>

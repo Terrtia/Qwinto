@@ -28,4 +28,22 @@ class Feuille extends Entity
         '*' => true,
         'ID' => false,
     ];
+
+	public function ligne0_explode(){
+        	$ligne = explode("/", $this->TABLEAU);
+		$ligne0 = explode(',', $ligne[0]);
+   		return $ligne0;
+	}
+
+	public function ligne1_explode(){
+        	$ligne = explode("/", $this->TABLEAU);
+		$ligne1 = explode(',', $ligne[1]);
+   		return $ligne1;
+	}
+
+	public function ligne2_explode(){
+        	$ligne = explode("/", $this->TABLEAU);
+		$ligne2 = explode(',', $ligne[2]);
+   		return $ligne2;
+	}
 }
