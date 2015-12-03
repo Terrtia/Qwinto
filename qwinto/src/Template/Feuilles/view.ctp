@@ -32,11 +32,20 @@
         </tr>
     </table>
 </div>
+
+<script type = "text/javascript">
+	function change_val(nval,ind){
+		$tableau[ind] = '';
+		document.write("fait");
+	}
+</script>
+
 	<table BORDER = 2 bgcolor='RED'>
-		<tr bgcolor = 'BLUE'>
+		<tr bgcolor = 'BLUE' onclick="alert()">
 			<?php
 			for($i=0;$i<12;$i++){
-					echo'<td onclik=change_val(A,$i)>';
+					$temp = 'case0'.$i;
+					echo'<td id ="'.$temp.'" onclick="alert("'.$temp.'")>';
 					echo $tableau[$i];
 				echo'</td>';
 			}
@@ -63,9 +72,5 @@
 			?>
 		</tr>	
 	</table>
-	
-<script type = "text/javascript">
-	function change_val(nval,ind){
-		$tableau[ind] = '';
-	}
-</script>
+<button onclick=alert("lol");>Click</button>
+
