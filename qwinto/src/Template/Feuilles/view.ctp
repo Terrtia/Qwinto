@@ -31,12 +31,12 @@
             <td><?= $this->Number->format($feuille->USER_ID) ?></td>
         </tr>
     </table>
-
+</div>
 	<table BORDER = 2 bgcolor='RED'>
 		<tr bgcolor = 'BLUE'>
 			<?php
-			for($i=0;$i<3;$i++){
-				echo'<td>';
+			for($i=0;$i<12;$i++){
+					echo'<td onclik=change_val(A,$i)>';
 					echo $tableau[$i];
 				echo'</td>';
 			}
@@ -45,7 +45,7 @@
 
 		<tr bgcolor = 'RED'>
 			<?php
-			for($i=0;$i<3;$i++){
+			for($i=0;$i<12;$i++){
 				echo'<td>';
 					echo $tableau1[$i];
 				echo'</td>';
@@ -53,14 +53,19 @@
 			?>
 		</tr>
 		
-		<tr bgcolor = 'GREEN'>
+		<tr bgcolor = 'RED'>
 			<?php
-			for($i=0;$i<3;$i++){
+			for($i=0;$i<12;$i++){
 				echo'<td>';
 					echo $tableau2[$i];
 				echo'</td>';
 			}
 			?>
 		</tr>	
-	</table>	
-</div>
+	</table>
+	
+<script type = "text/javascript">
+	function change_val(nval,ind){
+		$tableau[ind] = '';
+	}
+</script>
