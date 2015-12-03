@@ -33,11 +33,34 @@
 <button onclick=alert("lol");>Click</button>
 
 <script type = "text/javascript">
-	function change_val(nval,id){
-		element = document.getElementById(id);
-		element.style.color = "RED";
-		alert("fait");
-	}
+	$(document).ready(function(){
+		function change_val(nval,id){
+			element = document.getElementById(id);
+			var orel = 1;
+			$.ajax({
+				url:'feuilles/change',
+				data: {
+					element: orel
+				},
+			type: 'post',
+			datatype: 'json', 
+			success : function(res){
+				$.each(res, function(clef,valeur){
+					alert(clef + valeur);
+				});
+			
+			}, 
+			error : function(result, statut, erreur){
+				console.log(result);
+			},
+			
+			complete : function(result,statut,erreur){
+
+			}
+		});
+		}
+	change_val('A',1);		
+	});
 
 </script>
 
