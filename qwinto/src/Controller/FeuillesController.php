@@ -122,8 +122,9 @@ class FeuillesController extends AppController
         $this->viewBuilder()->layout(false);
 		if($this->request->is('ajax')){
 			$anais = $this->request->data['element'];
-			$anais = "yarr";
+			$brice = "yarr";
 			$this->set('change',$anais);
+            $this->set('sbla',$brice);
 		}		
 	}
 }

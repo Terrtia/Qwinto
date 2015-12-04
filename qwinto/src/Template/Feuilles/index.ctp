@@ -28,6 +28,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $feuille->ID]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $feuille->ID]) ?>
+                    <?= $this->Html->link(__('Change'),['action' => 'change', $feuille->ID])?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $feuille->ID], ['confirm' => __('Are you sure you want to delete # {0}?', $feuille->ID)]) ?>
                 </td>
             </tr>
@@ -43,6 +44,7 @@
         <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
+
 <script type = "text/javascript">
     $(document).ready(function(){
         function change_val(nval,id){
@@ -55,10 +57,8 @@
                 },
             type: 'post',
             datatype: 'json', 
-            success : function(res){
-                $.each(res, function(clef,valeur){
-                    alert(clef + valeur);
-                });
+            success : function(res){          
+                    alert(res);
             
             }, 
 

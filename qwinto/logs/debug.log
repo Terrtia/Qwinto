@@ -1,0 +1,103 @@
+2015-12-04 10:05:50 Notice: Notice (8): Undefined variable: change in [C:\wamp\www\Qwinto\qwinto\src\Template\Feuilles\change.ctp, line 2]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 140
+include - APP/Template\Feuilles\change.ctp, line 2
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 971
+Cake\View\View::_render() - CORE\src\View\View.php, line 931
+Cake\View\View::render() - CORE\src\View\View.php, line 579
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2015-12-04 10:07:09 Notice: Notice (8): Undefined variable: change in [C:\wamp\www\Qwinto\qwinto\src\Template\Feuilles\change.ctp, line 2]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 140
+include - APP/Template\Feuilles\change.ctp, line 2
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 971
+Cake\View\View::_render() - CORE\src\View\View.php, line 931
+Cake\View\View::render() - CORE\src\View\View.php, line 579
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2015-12-04 10:07:29 Notice: Notice (8): Undefined variable: change in [C:\wamp\www\Qwinto\qwinto\src\Template\Feuilles\change.ctp, line 2]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 140
+include - APP/Template\Feuilles\change.ctp, line 2
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 971
+Cake\View\View::_render() - CORE\src\View\View.php, line 931
+Cake\View\View::render() - CORE\src\View\View.php, line 579
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2015-12-04 10:08:41 Notice: Notice (8): Undefined variable: anais in [C:\wamp\www\Qwinto\qwinto\src\Template\Feuilles\change.ctp, line 2]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 140
+include - APP/Template\Feuilles\change.ctp, line 2
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 971
+Cake\View\View::_render() - CORE\src\View\View.php, line 931
+Cake\View\View::render() - CORE\src\View\View.php, line 579
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2015-12-04 10:08:54 Notice: Notice (8): Undefined variable: change in [C:\wamp\www\Qwinto\qwinto\src\Template\Feuilles\change.ctp, line 2]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 140
+include - APP/Template\Feuilles\change.ctp, line 2
+Cake\View\View::_evaluate() - CORE\src\View\View.php, line 971
+Cake\View\View::_render() - CORE\src\View\View.php, line 931
+Cake\View\View::render() - CORE\src\View\View.php, line 579
+Cake\Controller\Controller::render() - CORE\src\Controller\Controller.php, line 611
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 120
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2015-12-04 10:10:04 Notice: Notice (8): Undefined index: element in [C:\wamp\www\Qwinto\qwinto\src\Controller\FeuillesController.php, line 124]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 140
+App\Controller\FeuillesController::change() - APP/Controller\FeuillesController.php, line 124
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 429
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 114
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2015-12-04 10:11:45 Notice: Notice (8): Undefined index: element in [C:\wamp\www\Qwinto\qwinto\src\Controller\FeuillesController.php, line 124]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 140
+App\Controller\FeuillesController::change() - APP/Controller\FeuillesController.php, line 124
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 429
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 114
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
+2015-12-04 10:12:23 Notice: Notice (8): Undefined index: element in [C:\wamp\www\Qwinto\qwinto\src\Controller\FeuillesController.php, line 124]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE\src\Error\BaseErrorHandler.php, line 140
+App\Controller\FeuillesController::change() - APP/Controller\FeuillesController.php, line 124
+Cake\Controller\Controller::invokeAction() - CORE\src\Controller\Controller.php, line 429
+Cake\Routing\Dispatcher::_invoke() - CORE\src\Routing\Dispatcher.php, line 114
+Cake\Routing\Dispatcher::dispatch() - CORE\src\Routing\Dispatcher.php, line 87
+[main] - ROOT\webroot\index.php, line 37
+
+
+
