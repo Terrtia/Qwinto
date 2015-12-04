@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -118,6 +119,7 @@ class FeuillesController extends AppController
     }
 
 	public function change(){
+        $this->viewBuilder()->layout(false);
 		if($this->request->is('ajax')){
 			$anais = $this->request->data['element'];
 			$anais = "yarr";
