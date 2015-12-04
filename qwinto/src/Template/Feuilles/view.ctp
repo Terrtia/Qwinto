@@ -71,22 +71,22 @@
     /* Affichage de valeurs aléatoires pour les dés selectionnés et remise à 0 */
     if($de1 == 1) {
         $de1val = rand(1,6);
-        echo "Dé bleu : " . $de1val . "     ";
-        echo '<img src="/img/de' . $de1val .'.png">';
+        echo "Dé rouge : " . $de1val . "     ";
+        echo '<img src="/img/de' . $de1val .'rouge.png">';
         $de1 = 0;
         $de1val = 0;
     }
     if($de2 == 1) {
         $de2val = rand(1,6);
-        echo "Dé blanc : " . $de2val . "     ";
-        echo '<img src="/img/de' . $de2val .'.png">';
+        echo "Dé jaune : " . $de2val . "     ";
+        echo '<img src="/img/de' . $de2val .'jaune.png">';
         $de2 = 0;
         $de2val = 0;
     }
     if($de3 == 1) {
         $de3val = rand(1,6);
-        echo "Dé rouge : " . $de3val . "     ";
-        echo '<img src="/img/de' . $de3val .'.png">';
+        echo "Dé orange : " . $de3val . "     ";
+        echo '<img src="/img/de' . $de3val .'orange.png">';
         $de3 = 0;
         $de3val = 0;
     }
