@@ -216,7 +216,7 @@ return [
              */
             //'port' => 'nonstandard_port_number',
             'username' => 'root',
-            'password' => 'riguidon18',
+            'password' => '',
             'database' => 'cake_qwintos',
             'encoding' => 'utf8',
             'timezone' => 'UTC',

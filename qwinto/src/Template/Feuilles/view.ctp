@@ -1,49 +1,52 @@
-	<table BORDER = 2>
-		<tr bgcolor = 'RED'>
-                    <td colspan=2 bgcolor = 'WHITE'>  </td>
+<table width="720">
+		<tr height=60>
+                    <td colspan=2 width=120 bgcolor = 'WHITE'>  </td>
 			<?php
 			for($i=2;$i<12;$i++){
-                            if($tableau[$i] == -1) echo '<td></td>'; else {
+                            if($tableau[$i] == -1) echo '<td width=60 background=/img/rouge.png></td>';
+                            else if($tableau[$i] == -2) echo '<td width=60 background=/img/pentaRouge.png></td>'; else{
                             $temp = 'case0'.$i;
-                            echo'<td id ="'.$temp.'" onclick=change_val("A","'.$temp.'")>';
+                            echo'<td width=60 background=/img/rondRouge.png align=center id ="'.$temp.'" onclick=change_val("A","'.$temp.'")>';
                             echo $tableau[$i];
                             echo'</td>';};
 			}
 			?>
 		</tr>
 
-		<tr bgcolor = 'yellow'>
-                    <td bgcolor ='WHITE'></td>
+		<tr height=60>
+                    <td width=60 bgcolor ='WHITE'></td>
 			<?php
 			for($i=1;$i<11;$i++){
-                            if($tableau1[$i] == -1) echo '<td bgcolor = "yellow"></td>'; else {
-				echo'<td bgcolor = "yellow">';
+                            if($tableau1[$i] == -1) echo '<td width=60 background=/img/jaune.png></td>';
+                            else if($tableau1[$i] == -2) echo '<td width=60 background=/img/pentaJaune.png></td>'; else {
+				echo'<td  width=60 background=/img/rondJaune.png align=center >';
 					echo $tableau1[$i];
                             echo'</td>';};
 			}
 			?>
-                    <td bgcolor ='WHITE'></td>
+                    <td width=60 bgcolor ='WHITE'></td>
 		</tr>
 		
-		<tr bgcolor = 'ORANGE'>
+		<tr height=60>
 			<?php
 			for($i=0;$i<10;$i++){
-                            if($tableau2[$i] == -1) echo '<td></td>'; else {
-				echo'<td>';
+                            if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
+                            else if($tableau2[$i] == -2) echo '<td width=60 background=/img/pentaOrange.png></td>'; else {
+				echo'<td width=60 background=/img/rondOrange.png align=center >';
 					echo $tableau2[$i];
                             echo'</td>';};
 			}
 			?>
-                        <td colspan=2 bgcolor = 'WHITE'>  </td>
+                        <td width=60 colspan=2 bgcolor = 'WHITE'>  </td>
 		</tr>	
-	</table>
+    </table>
 
 <br>
 <FORM method="POST">
-    <INPUT type="checkbox" name="de1" value="1"> Dé bleu
-    <INPUT type="checkbox" name="de2" value="2"> Dé blanc
-    <INPUT type="checkbox" name="de3" value="3"> Dé rouge
-    <INPUT type ="submit" value="Valider choix dés"/>
+    <INPUT type="checkbox" name="de1" value="1"> Dé Rouge
+    <INPUT type="checkbox" name="de2" value="2"> Dé Jaune
+    <INPUT type="checkbox" name="de3" value="3"> Dé Orange
+    <INPUT type ="submit" value="Lancer dés"/>
 </FORM>
 
 
