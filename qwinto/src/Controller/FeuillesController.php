@@ -10,6 +10,12 @@ use App\Controller\AppController;
  */
 class FeuillesController extends AppController
 {
+	
+
+	public function initialize(){	
+		parent::initialize();
+		$this->loadComponent('RequestHandler');
+	}
 
     /**
      * Index method
@@ -110,4 +116,12 @@ class FeuillesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+	public function change(){
+		if($this->request->is('ajax')){
+			$anais = $this->request->data['element'];
+			$anais = "yarr";
+			$this->set('change',$anais);
+		}		
+	}
 }
