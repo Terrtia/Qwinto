@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 02 Décembre 2015 à 18:39
+-- Généré le: Ven 04 Décembre 2015 à 10:53
 -- Version du serveur: 5.5.46-0ubuntu0.14.04.2
 -- Version de PHP: 5.5.9-1ubuntu4.14
 
@@ -35,14 +35,14 @@ CREATE TABLE IF NOT EXISTS `feuilles` (
   PRIMARY KEY (`ID`),
   KEY `NUM_PARTY` (`NUM_PARTY`,`USER_ID`),
   KEY `USER_ID` (`USER_ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Contenu de la table `feuilles`
 --
 
 INSERT INTO `feuilles` (`ID`, `NOMBRES_CROIX`, `TABLEAU`, `NUM_PARTY`, `USER_ID`) VALUES
-(1, 0, '0,1,-1', 1, 1);
+(1, 0, '-1,-1,0,0,0,-1,0,0,0,0,0,0/-1,0,0,0,0,0,-1,0,0,0,0,-1/0,0,0,0,-1,0,0,0,0,0,-1,-1', 1, 1);
 
 -- --------------------------------------------------------
 
