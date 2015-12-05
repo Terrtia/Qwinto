@@ -13,6 +13,7 @@
 			?>
 		</tr>
 
+
 		<tr height=60>
                     <td width=60 bgcolor ='WHITE'></td>
 			<?php
@@ -20,10 +21,11 @@
                             if($tableau1[$i] == -1) echo '<td width=60 background=/img/jaune.png></td>';
                             else if($tableau1[$i] == -2) echo '<td width=60 background=/img/pentaJaune.png></td>'; else {
 				echo'<td  width=60 background=/img/rondJaune.png align=center >';
-					echo $tableau1[$i];
+				echo $tableau1[$i];
                             echo'</td>';};
 			}
 			?>
+
                     <td width=60 bgcolor ='WHITE'></td>
 		</tr>
 		
@@ -33,7 +35,7 @@
                             if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
                             else if($tableau2[$i] == -2) echo '<td width=60 background=/img/pentaOrange.png></td>'; else {
 				echo'<td width=60 background=/img/rondOrange.png align=center >';
-					echo $tableau2[$i];
+				echo $tableau2[$i];
                             echo'</td>';};
 			}
 			?>
