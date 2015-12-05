@@ -417,8 +417,8 @@ optgroup {
  */
 
 table {
-    border-collapse: collapse;
     border-spacing: 0;
+    max-width: 720px;
 }
 
 td,

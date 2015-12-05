@@ -34,7 +34,15 @@ class FeuillesController extends AppController
         $feuille = $this->Feuilles->get($id, [
             'contain' => []
         ]);
-        $this->set('feuille', $feuille);
+        
+	$tableau = $feuille->ligne0_explode();
+	$tableau1 = $feuille->ligne1_explode();
+	$tableau2 = $feuille->ligne2_explode();
+        
+	$this->set('feuille', $feuille);
+	$this->set('tableau' , $tableau);
+	$this->set('tableau1' , $tableau1);
+	$this->set('tableau2' , $tableau2);
         $this->set('_serialize', ['feuille']);
     }
 
@@ -101,5 +109,15 @@ class FeuillesController extends AppController
             $this->Flash->error(__('The feuille could not be deleted. Please, try again.'));
         }
         return $this->redirect(['action' => 'index']);
+    }
+    
+    public function change(){
+    $this->viewBuilder()->layout(false);
+        if($this->request->is('ajax')){
+            $anais = $this->request->data['element'];
+            $brice = "yarr";
+            $this->set('change',$anais);
+        $this->set('sbla',$brice);
+            }		
     }
 }
