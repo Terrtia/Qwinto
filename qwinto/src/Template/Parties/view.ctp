@@ -1,76 +1,46 @@
-<div class="parties view large-9 medium-8 columns content">
-    <h3><?= h($party->ID) ?></h3>
-    <table class="vertical-table">
-        <tr>
-            <th><?= __('ORDRE') ?></th>
-            <td><?= h($party->ORDRE) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('ID') ?></th>
-            <td><?= $this->Number->format($party->ID) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('TOUR') ?></th>
-            <td><?= $this->Number->format($party->TOUR) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('DE ROUGE') ?></th>
-            <td><?= $this->Number->format($party->DE_ROUGE) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('DE JAUNE') ?></th>
-            <td><?= $this->Number->format($party->DE_JAUNE) ?></td>
-        </tr>
-        <tr>
-            <th><?= __('DE VIOLET') ?></th>
-            <td><?= $this->Number->format($party->DE_VIOLET) ?></td>
-        </tr>
-    </table>
-</div>
-
 <table width="720">
-		<tr height=60>
-                    <td colspan=2 width=120 bgcolor = 'WHITE'>  </td>
-			<?php
-			for($i=2;$i<12;$i++){
-                            if($tableau[$i] == -1) echo '<td width=60 background=/img/rouge.png></td>';
-                            else if($tableau[$i] == -2) echo '<td width=60 background=/img/pentaRouge.png></td>'; else{
-                            $temp = 'case0'.$i;
-                            echo'<td width=60 background=/img/rondRouge.png align=center id ="'.$temp.'" onclick=change_val("A","'.$temp.'")>';
-                            echo $tableau[$i];
-                            echo'</td>';};
-			}
-			?>
-		</tr>
+    <tr height=60>
+        <td colspan=2 width=120 bgcolor = 'WHITE'>  </td>
+            <?php
+            for($i=2;$i<12;$i++){
+                if($tableau[$i] == -1) echo '<td width=60 background=/img/rouge.png></td>';
+                else if($tableau[$i] == -2) echo '<td width=60 background=/img/pentaRouge.png></td>'; else{
+                $temp = 'case0'.$i;
+                echo'<td width=60 background=/img/rondRouge.png align=center id ="'.$temp.'" onclick=change_val("A","'.$temp.'")>';
+                echo $tableau[$i];
+                echo'</td>';};
+            }
+            ?>
+    </tr>
 
 
-		<tr height=60>
-                    <td width=60 bgcolor ='WHITE'></td>
-			<?php
-			for($i=1;$i<11;$i++){
-                            if($tableau1[$i] == -1) echo '<td width=60 background=/img/jaune.png></td>';
-                            else if($tableau1[$i] == -2) echo '<td width=60 background=/img/pentaJaune.png></td>'; else {
-				echo'<td  width=60 background=/img/rondJaune.png align=center >';
-				echo $tableau1[$i];
-                            echo'</td>';};
-			}
-			?>
+    <tr height=60>
+        <td width=60 bgcolor ='WHITE'></td>
+            <?php
+            for($i=1;$i<11;$i++){
+                if($tableau1[$i] == -1) echo '<td width=60 background=/img/jaune.png></td>';
+                else if($tableau1[$i] == -2) echo '<td width=60 background=/img/pentaJaune.png></td>'; else {
+                    echo'<td  width=60 background=/img/rondJaune.png align=center >';
+                    echo $tableau1[$i];
+                echo'</td>';};
+            }
+            ?>
 
-                    <td width=60 bgcolor ='WHITE'></td>
-		</tr>
-		
-		<tr height=60>
-			<?php
-			for($i=0;$i<10;$i++){
-                            if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
-                            else if($tableau2[$i] == -2) echo '<td width=60 background=/img/pentaOrange.png></td>'; else {
-				echo'<td width=60 background=/img/rondOrange.png align=center >';
-				echo $tableau2[$i];
-                            echo'</td>';};
-			}
-			?>
-                        <td width=60 colspan=2 bgcolor = 'WHITE'>  </td>
-		</tr>	
+        <td width=60 bgcolor ='WHITE'></td>
+    </tr>
+
+    <tr height=60>
+            <?php
+            for($i=0;$i<10;$i++){
+                if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
+                else if($tableau2[$i] == -2) echo '<td width=60 background=/img/pentaOrange.png></td>'; else {
+                    echo'<td width=60 background=/img/rondOrange.png align=center >';
+                    echo $tableau2[$i];
+                echo'</td>';};
+            }
+            ?>
+            <td width=60 colspan=2 bgcolor = 'WHITE'>  </td>
+    </tr>	
     </table>
 
 <br>
@@ -93,19 +63,21 @@
     /*vérification dés selectionnés par les checkbox
      * echo $de1 . "   " . $de2 . "   " . $de3 . "<br>";;*/
 
-    
+    echo '<img id="de1" src=""></img>';
     // ne sert à rien pour l'instant
     echo '<br>
-    <button id="lancerDes" onclick="lancer_des(' . $de1 . ',' . $de2 . ',' . $de3 . ')">Lancer Dés</button>
+    <button id="lancerDes" onclick="lancerDes(' . $de1 . ',' . $de2 . ',' . $de3 . ')">Lancer Dés</button>
     <br>';
         
     $de1val = 0;
     $de2val = 0;
     $de3val = 0;
+    
+
             
     /* Affichage de valeurs aléatoires pour les dés selectionnés et remise à 0 */
-    if($de1 == 1) {
-        $de1val = rand(1,6);
+    /*if($de1 == 1) {
+        //$de1val = rand(1,6);
         echo "Dé rouge : " . $de1val . "     ";
         echo '<img src="/img/de' . $de1val .'rouge.png">';
         $de1 = 0;
@@ -124,15 +96,19 @@
         echo '<img src="/img/de' . $de3val .'orange.png">';
         $de3 = 0;
         $de3val = 0;
-    }
+    }*/
+    
 
     //echo $de1val . "   " . $de2val . "   " . $de3val;
 ?>
-<script type="text/javascript">
+
+<?= $this->Html->link(__('Change'),['action' => 'change', $party->ID]) ?>
+
+<!--<script type="text/javascript">
     function lancer_des(de1, de2, de3) {
-        alert("blp");
         if(de1 == 1) {
             de1val = Math.floor((6*Math.random()+1));
+            $this->set('DE_ROUGE' => de1val);
             de1 = 0;
             alert("dé1 = " + de1val);
         }
@@ -145,4 +121,39 @@
             de3 = 0;
         }
     }
+</script>-->
+
+<script type = "text/javascript">
+    $(document).ready(function(){
+        function lancerDes(idDe1,idDe2, idDe3){
+            alert("blp");
+            element = document.getElementById(idDe1);
+            //de2 = document.getElementById(idDe2);
+            //de3 = document.getElementById(idDe3);
+            var de1val = 1;
+            $.ajax({
+                url:"parties/change",
+                data: {
+                    element : de1val
+                },
+            type: 'post',
+            datatype: 'json', 
+            success : function(res){   
+                alert("graou");
+                de1.setAttribute('src','/img/de1rouge.png');
+            
+            }, 
+
+            error : function(result, statut, erreur){
+                console.log(result);
+            },
+            
+            complete : function(result,statut,erreur){
+
+            }
+        });
+        }
+    lancerDes(idDe1,idDe2,idDe3);      
+    });
+
 </script>

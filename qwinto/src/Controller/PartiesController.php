@@ -10,6 +10,11 @@ use App\Controller\AppController;
  */
 class PartiesController extends AppController
 {
+    
+    public function initialize(){	
+        parent::initialize();
+        $this->loadComponent('RequestHandler');
+    }
 
     /**
      * Index method
@@ -37,10 +42,16 @@ class PartiesController extends AppController
         $tableau = $party->feuilles[0]->ligne0_explode();
         $tableau1 = $party->feuilles[0]->ligne1_explode();
         $tableau2 = $party->feuilles[0]->ligne2_explode();
+        $deRouge = $party->DE_ROUGE;
+        $deJaune = $party->DE_JAUNE;
+        $deOrange = $party->DE_VIOLET;
         $this->set('party', $party);
         $this->set('tableau', $tableau);
         $this->set('tableau1', $tableau1);
         $this->set('tableau2', $tableau2);
+        $this->set('deRouge', $deRouge);
+        $this->set('deJaune', $deJaune);
+        $this->set('deOrange', $deOrange);
         $this->set('_serialize', ['party']);
     }
 
@@ -108,4 +119,24 @@ class PartiesController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+    
+    public function change(){
+    $this->viewBuilder()->layout(false);
+        if($this->request->is('ajax')){
+            $de1 = $this->request->data['element'];
+            $this->set('change',$de1);
+            
+        }		
+    }
+    
+    // fonction d'axel
+    /*public function change(){
+    $this->viewBuilder()->layout(false);
+            if($this->request->is('ajax')){
+                    $anais = $this->request->data['element'];
+                    $brice = "yarr";
+                    $this->set('change',$anais);
+        $this->set('sbla',$brice);
+            }		
+    }*/
 }
