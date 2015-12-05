@@ -32,9 +32,15 @@ class PartiesController extends AppController
     public function view($id = null)
     {
         $party = $this->Parties->get($id, [
-            'contain' => []
+            'contain' => ['feuilles']
         ]);
+        $tableau = $party->feuilles[0]->ligne0_explode();
+        $tableau1 = $party->feuilles[0]->ligne1_explode();
+        $tableau2 = $party->feuilles[0]->ligne2_explode();
         $this->set('party', $party);
+        $this->set('tableau', $tableau);
+        $this->set('tableau1', $tableau1);
+        $this->set('tableau2', $tableau2);
         $this->set('_serialize', ['party']);
     }
 

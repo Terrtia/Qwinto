@@ -29,4 +29,5 @@ class Party extends Entity
         '*' => true,
         'ID' => false,
     ];
+
 }

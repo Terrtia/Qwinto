@@ -27,6 +27,10 @@ class PartiesTable extends Table
         $this->table('parties');
         $this->displayField('ID');
         $this->primaryKey('ID');
+        $this->hasMany('feuilles', [
+            'foreignKey' => 'NUM_PARTY',
+            'dependent' => true,
+        ]);
 
     }
 
