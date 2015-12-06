@@ -19,7 +19,8 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($feuilles as $feuille): ?>
+            <?php foreach ($feuilles as $feuille):?>
+
             <tr>
                 <td><?= $this->Number->format($feuille->ID) ?></td>
                 <td><?= $this->Number->format($feuille->NOMBRES_CROIX) ?></td>
@@ -45,3 +46,5 @@
         <p><?= $this->Paginator->counter() ?></p>
     </div>
 </div>
+
+    

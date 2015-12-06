@@ -38,11 +38,14 @@ class FeuillesController extends AppController
 	$tableau = $feuille->ligne0_explode();
 	$tableau1 = $feuille->ligne1_explode();
 	$tableau2 = $feuille->ligne2_explode();
-        
+   // $string = $feuille->addvaleur(0,3,18);
+
 	$this->set('feuille', $feuille);
 	$this->set('tableau' , $tableau);
 	$this->set('tableau1' , $tableau1);
 	$this->set('tableau2' , $tableau2);
+    //$this->set('string',$string);
+   
         $this->set('_serialize', ['feuille']);
     }
 
@@ -91,6 +94,27 @@ class FeuillesController extends AppController
         $this->set(compact('feuille'));
         $this->set('_serialize', ['feuille']);
     }
+
+    public function changeCase()
+    {
+        $this->viewBuilder()->layout(false);
+        if($this->request->is('ajax')){
+
+            $id = $this->request->data['id'];
+            $noligne = $this->request->data['noLigne'];
+            $nocase = $this->request->data['noCase'];
+            $val = $this->request->data['val'];
+            
+
+        $feuille = $this->Feuilles->find()->where(['ID' => $id])->first();
+        $string = addvaleur($noligne,$nocase,$val);
+        $feuille->TABLEAU = $string;
+        $this->Feuilles->save($feuille);
+        $this->set('string',$string);
+        
+        }
+    }
+
 
     /**
      * Delete method
