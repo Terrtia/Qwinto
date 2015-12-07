@@ -122,10 +122,25 @@ class PartiesController extends AppController
     
     public function change(){
     $this->viewBuilder()->layout(false);
-        if($this->request->is('ajax')){
-            $de1 = $this->request->data['element'];
-            $this->set('change',$de1);
+       if($this->request->is('ajax')){
+            $de1 = $this->request->data['de1'];
+            $de2 = $this->request->data['de2'];
+            $de3 = $this->request->data['de3'];
+            $de1val = 0;
+            $de2val = 0;
+            $de3val = 0;
+            if($de1) $de1val = rand(1,6);
+            if($de2) $de2val = rand(1,6);
+            if($de3) $de3val = rand(1,6);
+            $this->set('de1val',$de1val);
+            $this->set('de2val',$de2val);
+            $this->set('de3val',$de3val);
             
+            /*$party = $this->Feuilles->find()->where(['ID' => $id])->first();
+            $party->DE_ROUGE = $de1val;
+            $party->DE_JAUNE = $de2val;
+            $party->DE_VIOLET = $de3val;
+            $this->Party->save($party);*/
         }		
     }
     

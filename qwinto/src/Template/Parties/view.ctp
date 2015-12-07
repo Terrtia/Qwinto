@@ -45,9 +45,9 @@
 
 <br>
 <FORM method="POST">
-    <INPUT type="checkbox" name="de1" value="1"> Dé Rouge
-    <INPUT type="checkbox" name="de2" value="2"> Dé Jaune
-    <INPUT type="checkbox" name="de3" value="3"> Dé Orange
+    <INPUT type="checkbox" id="checkbox1" name="de1" value="1"> Dé Rouge
+    <INPUT type="checkbox" id="checkbox2" name="de2" value="2"> Dé Jaune
+    <INPUT type="checkbox" id="checkbox3" name="de3" value="3"> Dé Orange
     <INPUT type ="submit" value="Lancer dés"/>
 </FORM>
 
@@ -64,9 +64,11 @@
      * echo $de1 . "   " . $de2 . "   " . $de3 . "<br>";;*/
 
     echo '<img id="de1" src=""></img>';
+    echo '<img id="de2" src=""></img>';
+    echo '<img id="de3" src=""></img>';
     // ne sert à rien pour l'instant
     echo '<br>
-    <button id="lancerDes" onclick="lancerDes(' . $de1 . ',' . $de2 . ',' . $de3 . ')">Lancer Dés</button>
+    <button id="lancerDes" onclick="lancerDes()">Lancer Dés</button>
     <br>';
         
     $de1val = 0;
@@ -124,24 +126,28 @@
 </script>-->
 
 <script type = "text/javascript">
-    $(document).ready(function(){
-        function lancerDes(idDe1,idDe2, idDe3){
-            alert("blp");
-            element = document.getElementById(idDe1);
-            //de2 = document.getElementById(idDe2);
-            //de3 = document.getElementById(idDe3);
-            var de1val = 1;
+ //   $(document).ready(function(){
+        function lancerDes(){
+            de1Check = document.getElementById("checkbox1").checked;
+            de2Check = document.getElementById("checkbox2").checked;
+            de3Check = document.getElementById("checkbox3").checked;
             $.ajax({
-                url:"parties/change",
+                url:"/parties/change",
                 data: {
-                    element : de1val
+                    de1 : de1Check,
+                    de2 : de2Check,
+                    de3 : de3Check
                 },
             type: 'post',
             datatype: 'json', 
-            success : function(res){   
-                alert("graou");
-                de1.setAttribute('src','/img/de1rouge.png');
-            
+            success : function(res){  
+                var resultat = JSON.parse(res);
+                var srcDe1 = '/img/de'+ resultat.d1 +'rouge.png'
+                de1.setAttribute('src',srcDe1);
+                var srcDe2 = '/img/de'+ resultat.d2 +'jaune.png'
+                de2.setAttribute('src',srcDe2);
+                var srcDe3 = '/img/de'+ resultat.d3 +'orange.png'
+                de3.setAttribute('src',srcDe3);
             }, 
 
             error : function(result, statut, erreur){
@@ -153,7 +159,7 @@
             }
         });
         }
-    lancerDes(idDe1,idDe2,idDe3);      
-    });
+   // lancerDes(idDe1,idDe2,idDe3);      
+  //  });
 
 </script>
