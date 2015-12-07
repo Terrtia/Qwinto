@@ -164,7 +164,7 @@
         }
 
 	function affectCase(id){
-           //var case = document.getElementById(id);
+           //var case = document.getElementById(""+id);
 		alert();
 	   $.ajax({
                 url:"/parties/changeCase",

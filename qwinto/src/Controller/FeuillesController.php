@@ -95,25 +95,7 @@ class FeuillesController extends AppController
         $this->set('_serialize', ['feuille']);
     }
 
-    public function changeCase()
-    {
-        $this->viewBuilder()->layout(false);
-        if($this->request->is('ajax')){
-
-            $id = $this->request->data['id'];
-            $noligne = $this->request->data['noLigne'];
-            $nocase = $this->request->data['noCase'];
-            $val = $this->request->data['val'];
-            
-
-        $feuille = $this->Feuilles->find()->where(['ID' => $id])->first();
-        $string = addvaleur($noligne,$nocase,$val);
-        $feuille->TABLEAU = $string;
-        $this->Feuilles->save($feuille);
-        $this->set('string',$string);
-        
-        }
-    }
+    
 
 
     /**

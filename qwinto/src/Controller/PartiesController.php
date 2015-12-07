@@ -129,9 +129,17 @@ class PartiesController extends AppController
             $de1val = 0;
             $de2val = 0;
             $de3val = 0;
-            if($de1) $de1val = rand(1,6);
-            if($de2) $de2val = rand(1,6);
-            if($de3) $de3val = rand(1,6);
+            if($de1 == "true"){
+		$de1val = rand(1,6);	
+		}else{
+			$de1val = 0;
+		}
+            if($de2 == "true"){
+		 $de2val = rand(1,6);
+		}
+            if($de3 == "true"){
+		 $de3val = rand(1,6);
+		}
             
             
             $party = $this->Parties->find()->where(['ID' => 2])->first();
@@ -145,15 +153,29 @@ class PartiesController extends AppController
             $this->set('de3val',$de3val);	
         }		
     }
-    
-    // fonction d'axel
-    /*public function change(){
-    $this->viewBuilder()->layout(false);
-            if($this->request->is('ajax')){
-                    $anais = $this->request->data['element'];
-                    $brice = "yarr";
-                    $this->set('change',$anais);
-        $this->set('sbla',$brice);
-            }		
-    }*/
+
+	public function changeCase()
+    {
+	
+        $this->viewBuilder()->layout(false);
+        if($this->request->is('ajax')){
+
+            $id = $this->request->data['id'];
+ 
+        $tab = id.exlode("/",$id); 
+	$party = $this->Parties->get(2, [
+            'contain' => ['feuilles']
+        ]);
+
+	$var = 4;
+        $feuille = $this->feuilles[0];
+        $string = $feuille->addvaleur($tab[1],$tab[2],$var);
+        $feuille->TABLEAU = $string;
+        $party->Feuilles->save($feuille);
+	
+	    $this->set('var',$var);
+            $this->set('id',$id);
+        }
+    }
+   
 }
