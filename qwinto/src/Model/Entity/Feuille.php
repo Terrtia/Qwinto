@@ -61,4 +61,44 @@ class Feuille extends Entity
         return $possible
     }*/
 
+     public function addValeur($noligne,$nocase,$val){
+        $tab1 = $this->ligne0_explode();
+        $tab2 = $this->ligne1_explode();
+        $tab3 = $this->ligne2_explode();
+        $string = null;
+
+        if($noligne == 0){
+            $tab1[$nocase] = $val;
+            
+        }else if ($noligne == 1){
+            $tab2[$nocase] = $val;
+
+        }else{
+            $tab3[$nocase] = $val;
+        }
+
+        for($i = 0 ; $i<12 ; $i++){
+            if($i != 11){
+                $string = $string.$tab1[$i].",";
+            }else{
+                $string = $string.$tab1[$i]."/";
+            }
+        }
+        for($i = 0 ; $i<12 ; $i++){
+            if($i != 11){
+                $string = $string.$tab2[$i].",";
+            }else{
+                $string = $string.$tab2[$i]."/";
+            }
+        }
+
+        for($i = 0 ; $i<12 ; $i++){
+            if($i != 11){
+                $string = $string.$tab3[$i].",";
+            }else{
+                $string = $string.$tab3[$i]."/";
+            }
+        }
+        return $string;
+    }
 }

@@ -19,7 +19,8 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($feuilles as $feuille): ?>
+            <?php foreach ($feuilles as $feuille):?>
+
             <tr>
                 <td><?= $this->Number->format($feuille->ID) ?></td>
                 <td><?= $this->Number->format($feuille->NOMBRES_CROIX) ?></td>
@@ -46,33 +47,4 @@
     </div>
 </div>
 
-<script type = "text/javascript">
-    $(document).ready(function(){
-        function change_val(nval,id){
-            element = document.getElementById(id);
-            var orel = 1;
-            $.ajax({
-                url:"feuilles/change",
-                data: {
-                    element: orel
-                },
-            type: 'post',
-            datatype: 'json', 
-            success : function(res){          
-                    alert(res);
-            
-            }, 
 
-            error : function(result, statut, erreur){
-                console.log(result);
-            },
-            
-            complete : function(result,statut,erreur){
-
-            }
-        });
-        }
-    change_val('A',1);      
-    });
-
-</script>

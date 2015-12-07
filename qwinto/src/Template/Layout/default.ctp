@@ -33,6 +33,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <?= $this->Html->script('empty');?>
 </head>
 <body>
     <nav class="top-bar expanded" data-topbar role="navigation">

@@ -140,7 +140,7 @@ class PartiesController extends AppController
             $party->DE_ROUGE = $de1val;
             $party->DE_JAUNE = $de2val;
             $party->DE_VIOLET = $de3val;
-            $this->Party->save($party);*/
+                $this->Party->save($party);*/
         }		
     }
     
