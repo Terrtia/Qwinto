@@ -131,15 +131,13 @@ class PartiesController extends AppController
             $de3val = 0;
             if($de1 == "true"){
 		$de1val = rand(1,6);	
-		}else{
-			$de1val = 0;
-		}
+            }
             if($de2 == "true"){
-		 $de2val = rand(1,6);
-		}
+		$de2val = rand(1,6);
+            }
             if($de3 == "true"){
-		 $de3val = rand(1,6);
-		}
+		$de3val = rand(1,6);
+            }
             
             
             $party = $this->Parties->find()->where(['ID' => 2])->first();
