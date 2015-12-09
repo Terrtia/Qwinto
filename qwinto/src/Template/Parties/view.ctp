@@ -6,7 +6,7 @@
 		$temp = 'case/0/'.$i;
                 if($tableau[$i] == -1) echo '<td width=60 background=/img/rouge.png></td>';
                 else if($tableau[$i] == -2) {
-                    echo '<td width=60 background=/img/pentaRouge.png>'; 
+                    echo '<td width=60 background=/img/pentaRouge.png id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
                     echo $tableau[$i];
                     echo'</td>';
                 }else{
@@ -26,14 +26,15 @@
 		$temp = 'case/1/'.$i;
                 if($tableau1[$i] == -1) echo '<td width=60 background=/img/jaune.png></td>';
                 else if($tableau1[$i] == -2) {
-                    echo '<td width=60 background=/img/pentaJaune.png>'; 
+                    echo '<td width=60 background=/img/pentaJaune.png id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
                     echo $tableau1[$i];
                     echo'</td>';
                 }else {
                     echo'<td  width=60 background=/img/rondJaune.png align=center id ="'.$temp.'" onclick=affectCase("'.$temp.'")>';
-                    echo $tableau1[$i];
-                    echo'</td>';
-                };
+                    if($tableau1[$i]>0){
+                        echo $tableau1[$i];
+                    }  
+                echo'</td>';};
             }
             ?>
 
@@ -44,16 +45,17 @@
             <?php
             for($i=0;$i<10;$i++){
 		$temp = 'case/2/'.$i;
-                if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
+                if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png id ="'.$temp.'" onclick=affectCase("'.$temp.'")></td>';
                 else if($tableau2[$i] == -2) { 
                     echo '<td width=60 background=/img/pentaOrange.png>'; 
                     echo $tableau2[$i];
                     echo'</td>';
                 }else {
                     echo'<td width=60 background=/img/rondOrange.png align=center id ="'.$temp.'" onclick=affectCase("'.$temp.'")>';
+                if($tableau2[$i]>0){
                     echo $tableau2[$i];
-                    echo'</td>';
-                };
+                }  
+                echo'</td>';};
             }
             ?>
             <td width=60 colspan=2 bgcolor = 'WHITE'>  </td>
@@ -79,6 +81,10 @@ Pénalités :
 
 <br><br>
 <div id="score">Score = </div>
+
+
+<?= $this->Html->link(__('ChangeCase'),['action' => 'changeCase', $party->ID]) ?>
+
 
 <script type = "text/javascript">
     
@@ -117,20 +123,22 @@ Pénalités :
         }
 
 	function affectCase(id){
+        
           	kase = document.getElementById(id);
-		alert(id);
-	   $.ajax({
+		//alert(id);
+	        $.ajax({
                 url:"/parties/changeCase",
                 data: {
-                    id : id
+                    id: id
                 },
             type: 'post',
             datatype: 'json', 
-            success : function(res){ 
-                alert('graou');
-		var resultat = JSON.parse(res);
+            success : function(res){  
+                alert(res.val);
+	        var resultat = JSON.parse(res);
+                alert();
                 var kase = document.getElementById(resultat.id);
-		kase[0].innerHTML = resultat.val;
+    		kase[0].innerHTML = resultat.val;
             }, 
             error : function(result, statut, erreur){
                 console.log(result);
