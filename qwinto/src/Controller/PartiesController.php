@@ -188,9 +188,16 @@ class PartiesController extends AppController
             $tab = explode("/",$id); 
             $ligne = $tab[1];
             $colonne = $tab[2];
-            /* val devrait prendre la valeur à mettre dans la case, id j'en sais rien */
-            $val = 2;
-            $id = 12;
+            /* val est le résultat de la somme des dés, mais si on clique la case avant 
+             * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
+            $party = $this->Parties->find()->where(['ID' => 2])->first();
+            $val = $party->DE_ROUGE + $party->DE_JAUNE + $party->DE_VIOLET;
+            $id = 0;
+            // -1,-1, 0,-2,0,-1,0,-2,0,0,0,0/-1,0,0,0,0,0,-1,0,-2,0,0,-1/0,0,-2,0,-1,0,0,0,0,-2,-1,-1
+            /* NE FONCTIONNE PAS : récupération de la chaine du tableau de cases */
+            $feuille = $party->feuilles[0];
+            //$tabCases = $feuille->tableau;
+            //$tabLignes = explode("/",$tabCases);
             $this->set('val',$val);
             $this->set('id',$id);
             $this->set('ligne',$ligne);

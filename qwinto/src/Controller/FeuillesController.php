@@ -117,13 +117,16 @@ class FeuillesController extends AppController
         return $this->redirect(['action' => 'index']);
     }
     
-    public function change(){
-    $this->viewBuilder()->layout(false);
+    
+    public function changerVal()
+    {
+        $this->viewBuilder()->layout(false);
         if($this->request->is('ajax')){
-            $anais = $this->request->data['element'];
-            $brice = "yarr";
-            $this->set('change',$anais);
-        $this->set('sbla',$brice);
-            }		
+            $id = $this->request->data['id'];
+            $noLigne = $this->request->data['noLigne'];
+            $noCase = $this->request->data['noCase'];
+            $val = $this->request->data['val'];
+        }
     }
+
 }

@@ -157,7 +157,7 @@ Pénalités :
             datatype: 'json', 
             success : function(res){ 
 	        var resultat = JSON.parse(res);
-                alert(resultat.colonne);
+                alert(resultat.val);
                 //var case = document.getElementById(resultat.id);
     		//case[0].innerHTML = resultat.val;
             }, 
