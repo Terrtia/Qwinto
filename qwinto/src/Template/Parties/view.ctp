@@ -164,8 +164,8 @@
         }
 
 	function affectCase(id){
-           //var case = document.getElementById(id);
-		alert();
+          	kase = document.getElementById(id);
+		alert(id);
 	   $.ajax({
                 url:"/parties/changeCase",
                 data: {
@@ -175,8 +175,8 @@
             datatype: 'json', 
             success : function(res){  
 		var resultat = JSON.parse(res);
-                //var case = document.getElementById(resultat.id);
-		//case[0].innerHTML = resultat.val;
+                var kase = document.getElementById(resultat.id);
+		kase[0].innerHTML = resultat.val;
             }, 
             error : function(result, statut, erreur){
                 console.log(result);
@@ -188,5 +188,4 @@
         });
         }
     
-
 </script>
