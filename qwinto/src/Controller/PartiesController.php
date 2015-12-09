@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
+
 /**
  * Parties Controller
  *
@@ -156,25 +157,28 @@ class PartiesController extends AppController
 
 	public function changeCase()
     {
-	
         $this->viewBuilder()->layout(false);
         if($this->request->is('ajax')){
 
             $id = $this->request->data['id'];
- 
-        $tab = id.exlode("/",$id); 
-	$party = $this->Parties->get(2, [
+        $tab = explode("/",$id); 
+	    $party = $this->Parties->get(2, [
             'contain' => ['feuilles']
         ]);
 
-	$var = 4;
-        $feuille = $this->feuilles[0];
-        $string = $feuille->addvaleur($tab[1],$tab[2],$var);
+	    $var = 4;
+       //$feuille = $party->feuilles[0];
+        //$feuille = $this->Feuilles->find()->first();
+        $feuille = $feuilles->find()->first();
+        $string = $feuille->addValeur(0,3,4);
+        //$string = '-1,-1,4,18,0,-2,0,0,0,0,0,0/-1,0,0,0,0,0,-2,0,0,0,0,-1/0,0,0,0,-2,0,0,0,0,0,-1,-1/';
         $feuille->TABLEAU = $string;
-        $party->Feuilles->save($feuille);
-	
-	    $this->set('var',$var);
-            $this->set('id',$id);
+        $this->Feuilles->save($feuille);
+	    
+       // $var = 2;
+        //$id = 12;
+        $this->set('var',$var);
+        $this->set('id',$id);
         }
     }
    
