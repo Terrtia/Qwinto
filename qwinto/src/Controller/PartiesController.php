@@ -139,8 +139,7 @@ class PartiesController extends AppController
             if($de3 == "true"){
 		$de3val = rand(1,6);
             }
-            
-            
+              
             $party = $this->Parties->find()->where(['ID' => 2])->first();
             $party->DE_ROUGE = $de1val;
             $party->DE_JAUNE = $de2val;
@@ -153,30 +152,49 @@ class PartiesController extends AppController
         }		
     }
 
-	public function changeCase()
+    public function change_case()
+    {
+    $this->viewBuilder()->layout(false);
+        if($this->request->is('ajax')){
+            $id = $this->request->data['id'];
+            $tab = explode("/",$id); 
+	    $party = $this->Parties->get(2, [
+            'contain' => ['feuilles']
+            ]);
+
+            $var = 4;
+            //$feuille = $party->feuilles[0];
+            //$feuille = $this->Feuilles->find()->first();
+            $feuille = $feuilles->find()->first();
+            $string = $feuille->addValeur(0,3,4);
+            //$string = '-1,-1,4,18,0,-2,0,0,0,0,0,0/-1,0,0,0,0,0,-2,0,0,0,0,-1/0,0,0,0,-2,0,0,0,0,0,-1,-1/';
+            $feuille->TABLEAU = $string;
+            $this->Feuilles->save($feuille);
+
+            $var = 2;
+            $id = 12;
+            $this->set('var',$var);
+            $this->set('id',$id);
+        }
+    }
+    
+    public function modifcase()
     {
         $this->viewBuilder()->layout(false);
         if($this->request->is('ajax')){
-
+            /* récupération de case/numLigne/numColonne */
             $id = $this->request->data['id'];
-        $tab = explode("/",$id); 
-	    $party = $this->Parties->get(2, [
-            'contain' => ['feuilles']
-        ]);
-
-	    $var = 4;
-       //$feuille = $party->feuilles[0];
-        //$feuille = $this->Feuilles->find()->first();
-        $feuille = $feuilles->find()->first();
-        $string = $feuille->addValeur(0,3,4);
-        //$string = '-1,-1,4,18,0,-2,0,0,0,0,0,0/-1,0,0,0,0,0,-2,0,0,0,0,-1/0,0,0,0,-2,0,0,0,0,0,-1,-1/';
-        $feuille->TABLEAU = $string;
-        $this->Feuilles->save($feuille);
-	    
-       // $var = 2;
-        //$id = 12;
-        $this->set('var',$var);
-        $this->set('id',$id);
+            /* séparation et stockage des données reçues */
+            $tab = explode("/",$id); 
+            $ligne = $tab[1];
+            $colonne = $tab[2];
+            /* val devrait prendre la valeur à mettre dans la case, id j'en sais rien */
+            $val = 2;
+            $id = 12;
+            $this->set('val',$val);
+            $this->set('id',$id);
+            $this->set('ligne',$ligne);
+            $this->set('colonne',$colonne);
         }
     }
    
