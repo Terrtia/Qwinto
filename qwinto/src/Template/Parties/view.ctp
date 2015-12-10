@@ -140,12 +140,13 @@
             success : function(res){ 
 	        var resultat = JSON.parse(res);
 		if(resultat.end==1){
-			var r = confirm("C'est gagné");
-            if (r == true) {
-             document.location.href="/parties/index";
-            } else {
-               document.location.href="/parties/index";
-            }
+                    alert(resultat.score);
+                    var r = confirm("C'est gagné");
+                    if (r == true) {
+                        document.location.href="/parties/index";
+                    } else {
+                        document.location.href="/parties/index";
+                    }
 		}
                 var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
     		kase.innerHTML = resultat.val;
@@ -177,13 +178,13 @@
 		var cr = document.getElementById("croix");
     		cr.innerHTML = "Pénalités : "+ resultat.croix;
 		if(resultat.end==1){
-            var r = confirm("C'est perdu ...");
-            if (r == true) {
-             document.location.href="/parties/index";
-            } else {
-               document.location.href="/parties/index";
-            }
-            
+                    alert(resultat.score);
+                    /*var r = confirm("C'est perdu ...");
+                    if (r == true) {
+                     document.location.href="/parties/index";
+                    } else {
+                       document.location.href="/parties/index";
+                    }*/
 		}
     		
             }, 

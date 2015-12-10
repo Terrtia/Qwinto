@@ -1,3 +1,3 @@
 <?php
-    echo '{ "croix" : '.$croix. ', "end" : '.$end .'}';
+    echo '{ "croix" : '.$croix. ', "end" : '.$end . ', "score" : ' . $score . '}';
 ?>
