@@ -201,10 +201,7 @@ class PartiesController extends AppController
             $tab = explode("/",$id); 
             $ligne = $tab[1];
             $colonne = $tab[2];
-
-            /* val est le résultat de la somme des dés, mais si on clique la case avant 
-             * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
-            //$party = $this->Parties->find()->where(['ID' => 2])->first();
+            
 	$party = $this->Parties->get(2, [
             'contain' => ['feuilles']
         ]);
@@ -223,9 +220,12 @@ class PartiesController extends AppController
 		
 		$end = $feuille->end();
                 
-                /* marche pas */
-                //$score = 0;
-                //if($end == 1) $score = $feuille->score();
+                /* calcul du score si la partie est finie et remise à 0 de la bdd */
+                $score = 0;
+                if($end == 1){
+                    $score = $feuille->score();
+                    $this->nouveau();
+                }
 
                 $this->set('val',$val);
                 $this->set('id',$id);
@@ -253,17 +253,15 @@ class PartiesController extends AppController
 	    $party->DE_JAUNE = 0;
 	    $party->DE_VIOLET = 0;
 	    $this->Parties->save($party);
-           
-
-
-            /* val est le résultat de la somme des dés, mais si on clique la case avant 
-             * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
    
             $feuilles->save($feuille);
 	    $end = $feuille->end();
-            /* marche pas et bloque l'ajax, mais incrémente les croix sans les afficher */
+            /* calcul du score si la partie est finie et remise à 0 de la bdd */
             $score = 0;
-            if($end == 1) $score = $feuille->score();
+            if($end == 1) {
+                $score = $feuille->score();
+                $this->nouveau();
+            }
             
             $this->set('croix',$croix);
 	    $this->set('end',$end);
@@ -274,7 +272,7 @@ class PartiesController extends AppController
     public function nouveau(){
         $feuilles = TableRegistry::get('Feuilles');
         $feuille = $feuilles->find()->first();
-        $feuille->TABLEAU = '-1,-1,0,0,0,0,0,0,0,0,0,0/-1,0,0,0,0,0,0,0,0,0,0,-1/0,0,0,0,0,0,0,0,0,0,-1,-1/';
+        $feuille->TABLEAU = '-1,-1,0,-2,0,-1,0,-2,0,0,0,0/-1,0,0,0,0,0,-1,0,-2,0,0,-1/0,0,-2,0,-1,0,0,0,0,-2,-1,-1/';
         $feuille->NOMBRES_CROIX = 0;
         $feuilles->save($feuille);
     }

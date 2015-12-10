@@ -82,14 +82,6 @@
 
 <p id ="croix">Pénalités : 0</p>
 
-<br><br>
-<div id="score">Score = </div>
-
-
-
-<!--<?= $this->Html->link(__('Change'),['action' => 'change', $party->ID]) ?>
-<?= $this->Html->link(__('ChangeCase'),['action' => 'changeCase', $party->ID]) ?>-->
-
 
 
 <script type = "text/javascript">
@@ -140,7 +132,7 @@
             success : function(res){ 
 	        var resultat = JSON.parse(res);
 		if(resultat.end==1){
-                    alert(resultat.score);
+                    alert("Score = " + resultat.score);
                     var r = confirm("C'est gagné");
                     if (r == true) {
                         document.location.href="/parties/index";
@@ -178,13 +170,13 @@
 		var cr = document.getElementById("croix");
     		cr.innerHTML = "Pénalités : "+ resultat.croix;
 		if(resultat.end==1){
-                    alert(resultat.score);
-                    /*var r = confirm("C'est perdu ...");
+                    alert("Score = " + resultat.score);
+                    var r = confirm("C'est perdu ...");
                     if (r == true) {
                      document.location.href="/parties/index";
                     } else {
                        document.location.href="/parties/index";
-                    }*/
+                    }
 		}
     		
             }, 

@@ -212,7 +212,6 @@ class Feuille extends Entity
 	}
         
         public function score() {
-            $score = "";
             $scoreLigne0 = 0;
             $scoreLigne1 = 0;
             $scoreLigne2 = 0;
@@ -224,22 +223,40 @@ class Feuille extends Entity
             $resultat = 0;
             
             /* score ligne 1 */
-            if($this->remplie(0)) $scoreLigne0 = $this->getValeur(0, 11);
-            else $scoreLigne0 = $this->getNbValeurs($ligne);
+            if($this->remplie(0) == 1) {
+                $scoreLigne0 = $this->getValeur(0, 11);
+            }
+            else {
+                $scoreLigne0 = $this->getNbValeurs(0);
+            }
 
             /* ligne 2 */
-            if($this->remplie(1)) $scoreLigne1 = $this->getValeur(1, 10);
-            else $scoreLigne1 = $this->getNbValeurs($ligne);
+            if($this->remplie(1) == 1) {
+                $scoreLigne1 = $this->getValeur(1, 10);
+            }else {
+                $scoreLigne1 = $this->getNbValeurs(1);
+            }
 
             /* ligne 3 */
-            if($this->remplie(2)) $scoreLigne2 = $this->getValeur(2, 9);
-            else $scoreLigne2 = $this->getNbValeurs($ligne);
+            if($this->remplie(2) == 1) {
+               $scoreLigne2 = $this->getValeur(2, 9);
+            }else {
+                $scoreLigne2 = $this->getNbValeurs(2);
+            }
             
             /* score pentagones */
-            if($this->rempliecol(3)) $scorePent0 = $this->getValeur (0, 3);
-            if($this->rempliecol(8)) $scorePent1 = $this->getValeur (1, 8);
-            if($this->rempliecol(2)) $scorePent2 = $this->getValeur (2, 2);
-            if($this->rempliecol(9)) $scorePent3 = $this->getValeur (2, 9);
+            if($this->rempliecol(3) == 1) {
+                $scorePent0 = $this->getValeur(0, 3);
+            }
+            if($this->rempliecol(8) == 1) {
+                $scorePent1 = $this->getValeur(1, 8);
+            }
+            if($this->rempliecol(2) == 1) {
+                $scorePent2 = $this->getValeur(2, 2);
+            }
+            if($this->rempliecol(9) == 1) {
+                $scorePent3 = $this->getValeur(2, 9);
+            }
             
             /* penalités */
             $penalites = 5* $this->NOMBRES_CROIX;
@@ -247,20 +264,20 @@ class Feuille extends Entity
             /* résultat total */
             $resultat = $scoreLigne0 + $scoreLigne1 + $scoreLigne2 + $scorePent0 + $scorePent1 +
                     $scorePent2 + $scorePent3 - $penalites;
-            
-            /* JSON ne veut pas retourner le score sous la forme de chaine de caractères p-ê... */
-            $score = $scoreLigne0 . " + " + $scoreLigne1 . " + " + $scoreLigne2 . " + " .
-                    $scorePent0 . " + " . $scorePent1 . " + " . $scorePent2 . " + " .
-                    $scorePent3 . " - " . $penalites . " = " . $res;  
-            
-            /* je retourne l'entier au lieu de la chaîne */
+           
             return $resultat;
         }
 
     public function getValeur($ligne, $colonne) {
-        if($ligne == 0) $tab = $this->ligne0_explode();
-        else if($ligne == 1) $tab = $this->ligne1_explode();
-        else $tab = $this->ligne2_explode();
+        if($ligne == 0) {
+            $tab = $this->ligne0_explode();
+        }
+        else if($ligne == 1) {
+            $tab = $this->ligne1_explode();
+        }
+        else if($ligne == 2) {
+            $tab = $this->ligne2_explode();
+        }
         
         return $tab[$colonne];
     }
@@ -268,7 +285,7 @@ class Feuille extends Entity
     public function getNbValeurs($ligne) {
         $nbVal = 0;
         for($i = 0;$i < 12;$i++) {
-            if(getValeur($ligne,$i) > 0) {
+            if($this->getValeur($ligne,$i) > 0) {
                 $nbVal++;
             }
         }
@@ -289,7 +306,7 @@ class Feuille extends Entity
                     $tab = $this->ligne1_explode();
                     $i=1;
                     while($i<11){
-                            if($tab1[$i] == "0"){
+                            if($tab[$i] == "0"){
                                     return 0;
                             }
                             $i++;
