@@ -4,13 +4,13 @@
             <?php
             for($i=2;$i<12;$i++){
 		$temp = 'case/0/'.$i;
-                if($tableau[$i] == -1) echo '<td width=60 background=/img/rouge.png></td>';
+                if($tableau[$i] == -1) echo '<td width=60 background=/Qwinto/qwinto/img/rouge.png></td>';
                 else if($tableau[$i] == -2) {
-                    echo '<td width=60 background="/img/pentaRouge.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
+                    echo '<td width=60 background="/Qwinto/qwinto/img/pentaRouge.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
                     if($tableau[$i]>0) echo $tableau[$i];
                     echo'</td>';
                 }else{
-                    echo'<td width=60 background=/img/rondRouge.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
+                    echo'<td width=60 background=/Qwinto/qwinto/img/rondRouge.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
                     if($tableau[$i]>0) echo $tableau[$i];
                     echo'</td>';
                 };
@@ -24,13 +24,13 @@
             <?php
             for($i=1;$i<11;$i++){
 		$temp = 'case/1/'.$i;
-                if($tableau1[$i] == -1) echo '<td width=60 background="/img/jaune.png"></td>';
+                if($tableau1[$i] == -1) echo '<td width=60 background="/Qwinto/qwinto/img/jaune.png"></td>';
                 else if($tableau1[$i] == -2) {
-                    echo '<td width=60 background="/img/pentaJaune.png" id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
+                    echo '<td width=60 background="/Qwinto/qwinto/img/pentaJaune.png" id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
                     if($tableau1[$i]>0) echo $tableau1[$i];
                     echo'</td>';
                 }else {
-                    echo'<td  width=60 background=/img/rondJaune.png align=center id ="'.$temp.'" onclick=affectCase("'.$temp.'")>';
+                    echo'<td  width=60 background=/Qwinto/qwinto/img/rondJaune.png align=center id ="'.$temp.'" onclick=affectCase("'.$temp.'")>';
                     if($tableau1[$i]>0)echo $tableau1[$i];  
                     echo'</td>'; 
                 };
@@ -44,13 +44,13 @@
             <?php
             for($i=0;$i<10;$i++){
 		$temp = 'case/2/'.$i;
-                if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
+                if($tableau2[$i] == -1) echo '<td width=60 background=/Qwinto/qwinto/img/orange.png></td>';
                 else if($tableau2[$i] == -2) { 
-                    echo '<td width=60 background="/img/pentaOrange.png" id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
+                    echo '<td width=60 background="/Qwinto/qwinto/img/pentaOrange.png" id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
                     if($tableau2[$i]>0) echo $tableau2[$i];
                     echo'</td>';
                 }else {
-                    echo'<td width=60 background=/img/rondOrange.png align=center id ="'.$temp.'" onclick=affectCase("'.$temp.'")>';
+                    echo'<td width=60 background=/Qwinto/qwinto/img/rondOrange.png align=center id ="'.$temp.'" onclick=affectCase("'.$temp.'")>';
                     if($tableau2[$i]>0) echo $tableau2[$i];
                     echo'</td>';
                 };
@@ -67,9 +67,9 @@
     <INPUT type="checkbox" id="checkbox3" name="de3" value="3"> Dé Orange
 </FORM>
 
-<img id="de1" src="/img/de0rouge.png"></img>
-<img id="de2" src="/img/de0jaune.png"></img>
-<img id="de3" src="/img/de0orange.png"></img>
+<img id="de1" src="/Qwinto/qwinto/img/de0rouge.png"></img>
+<img id="de2" src="/Qwinto/qwinto/img/de0jaune.png"></img>
+<img id="de3" src="/Qwinto/qwinto/img/de0orange.png"></img>
 <br><br>
 <button id="lancerDes" onclick="lancerDes()">Lancer Dés</button>
 <br><br>
@@ -92,7 +92,7 @@ Pénalités :
             var de3Check = document.getElementById("checkbox3").checked;
 	
             $.ajax({
-                url:"/parties/change",
+                url:"/Qwinto/qwinto/parties/change",
                 data: {
                     de1 : de1Check,
                     de2 : de2Check,
@@ -102,11 +102,11 @@ Pénalités :
             datatype: 'json', 
             success : function(res){  
                 var resultat = JSON.parse(res);
-                var srcDe1 = '/img/de'+ resultat.d1 +'rouge.png'
+                var srcDe1 = '/Qwinto/qwinto/img/de'+ resultat.d1 +'rouge.png'
                 de1.setAttribute('src',srcDe1);
-                var srcDe2 = '/img/de'+ resultat.d2 +'jaune.png'
+                var srcDe2 = '/Qwinto/qwinto/img/de'+ resultat.d2 +'jaune.png'
                 de2.setAttribute('src',srcDe2);
-                var srcDe3 = '/img/de'+ resultat.d3 +'orange.png'
+                var srcDe3 = '/Qwinto/qwinto/img/de'+ resultat.d3 +'orange.png'
                 de3.setAttribute('src',srcDe3);
             }, 
 
@@ -125,7 +125,7 @@ Pénalités :
             kase = document.getElementById(id);
             //alert(id);
             $.ajax({
-            url:"/parties/change_case",
+            url:"/Qwinto/qwinto/parties/change_case",
             data: {
                 id: id
             },
@@ -149,17 +149,18 @@ Pénalités :
     
     function affecter(id){
             $.ajax({
-            url:"/parties/modifcase",
+            url:"/Qwinto/qwinto/parties/modifcase",
             data: {
                 id: id
             },
             type: 'post',
             datatype: 'json', 
             success : function(res){ 
-	        var resultat = JSON.parse(res);
-                alert(resultat.colonne);
-                //var case = document.getElementById(resultat.id);
-    		//case[0].innerHTML = resultat.val;
+	        //var resultat = JSON.parse(res);
+               // alert(res);
+               $(res.id).html(res.val);
+             //   var kase = document.getElementById(res.id);
+    		  //  kase.innerHTML = res.val;
             }, 
             error : function(result, statut, erreur){
                 console.log(result);

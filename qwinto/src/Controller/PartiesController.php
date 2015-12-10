@@ -2,8 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
-
+use Cake\ORM\TableRegistry;
 /**
  * Parties Controller
  *
@@ -182,7 +181,9 @@ class PartiesController extends AppController
     {
         $this->viewBuilder()->layout(false);
         if($this->request->is('ajax')){
-            /* récupération de case/numLigne/numColonne */
+            $feuilles = TableRegistry::get('Feuilles');
+            $feuille = $feuilles->find()->first();
+;            /* récupération de case/numLigne/numColonne */
             $id = $this->request->data['id'];
             /* séparation et stockage des données reçues */
             $tab = explode("/",$id); 
@@ -190,11 +191,15 @@ class PartiesController extends AppController
             $colonne = $tab[2];
             /* val devrait prendre la valeur à mettre dans la case, id j'en sais rien */
             $val = 2;
-            $id = 12;
+            $string = $feuille->addValeur($ligne,$colonne,$val);
+            $feuille->TABLEAU = $string;
+            $feuilles->save($feuille);
+
             $this->set('val',$val);
             $this->set('id',$id);
             $this->set('ligne',$ligne);
             $this->set('colonne',$colonne);
+            $this->set('string',$string);
         }
     }
    
