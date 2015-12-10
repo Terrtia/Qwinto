@@ -61,7 +61,70 @@ class Feuille extends Entity
         return $possible
     }*/
 
-     public function addValeur($noligne,$nocase,$val){
+    public function possible($val, $ligne, $colonne) {
+        $caseInterdite = -1;
+        $caseVide = 0;
+        $res = false;
+        $min = 0;
+        $max = 0;
+
+        $deRouge = 0;
+        $deJaune = 0;
+        $deViolet = 0;
+
+        $coul = 0;
+
+        if($ligne == 0){
+            $templigne = ligne0_explode;
+            if($deRouge != 0){
+                $coul = 1;
+            }
+        }
+        if($ligne == 1){
+            $templigne = ligne1_explode;
+            if($deJaune != 0){
+                $coul = 1;
+            }
+        }
+        if($ligne == 2){
+            $templigne = ligne2_explode;
+            if($deViolet != 0){
+                $coul = 1;
+            }
+        }
+
+        if ( $coul == 1){
+            if((int)$templigne[$colonne] != $caseInterdite && (int)$templigne[$colonne] == $caseVide){
+                  //recherche valeur precedente
+                for($i=0; $i<$colonne; $i++){
+                    if((int)$templigne[$colonne] != $caseVide){
+                        $min = (int)$templigne[$colonne];
+                    }
+                 }
+                 //recherche valeur suivante
+                for($i=$colonne; $i<12; $i++){
+                    if($max == 0 && (int)$templigne[$colonne] != $caseVide){
+                        $max = (int)$templigne[$colonne];
+                    }
+                }
+
+                if( $min <= $val && $val <= $max){
+                    $res = true;
+                }
+                if( $max == 0 && $min <= $min){
+                    $res = true;
+                }
+                if( $min == 0 && $max == 0){
+                    $res = true;
+                }
+            }
+        }
+
+        return $res;
+    }
+
+
+    public function addValeur($noligne,$nocase,$val){
         $tab1 = $this->ligne0_explode();
         $tab2 = $this->ligne1_explode();
         $tab3 = $this->ligne2_explode();
