@@ -181,7 +181,7 @@ class Feuille extends Entity
 		$i=2;
 		$nfini = 1;
 		while($i<12 and $nfini == 1){
-			if($tab1[$i] == "0"){
+			if($tab1[$i] == "0" or $tab1[$i] == "-2"){
 				$nfini = 0;
 				$nb_finis --;
 			}
@@ -190,7 +190,7 @@ class Feuille extends Entity
 		$i=1;
 		$nfini = 1;
 		while($i<11 and $nfini == 1){
-			if($tab2[$i] == "0"){
+			if($tab2[$i] == "0" or $tab2[$i] == "-2"){
 				$nfini = 0;
 				$nb_finis --;
 			}
@@ -199,7 +199,7 @@ class Feuille extends Entity
 		$i=0;
 		$nfini = 1;
 		while($i<10 and $nfini == 1){
-			if($tab3[$i] == "0"){
+			if($tab3[$i] == "0" or $tab3[$i] == "-2"){
 				$nfini = 0;
 				$nb_finis --;
 			}
@@ -299,16 +299,16 @@ class Feuille extends Entity
                     $tab = $this->ligne0_explode();
                     $i=2;
                     while($i<12){
-                            if($tab[$i] == "0"){
+                            if($tab[$i] == "0" or $tab[$i] == "-2"  ){
                                     return 0;
-                            }
+                            } 
                             $i++;
                     }
             }else if($ligne == 1){
                     $tab = $this->ligne1_explode();
                     $i=1;
                     while($i<11){
-                            if($tab[$i] == "0"){
+                            if($tab[$i] == "0"or $tab[$i] == "-2"){
                                     return 0;
                             }
                             $i++;
@@ -317,7 +317,7 @@ class Feuille extends Entity
                     $tab = $this->ligne2_explode();
                     $i=0;
                     while($i<10){
-                            if($tab[$i] == "0"){
+                            if($tab[$i] == "0"or $tab[$i] == "-2"){
                                     return 0;
                             }
                             $i++;
