@@ -134,7 +134,7 @@ class PartiesController extends AppController
             $de2val = 0;
             $de3val = 0;
 //a remettre pour le final empeche le jouer de relancer les des
-	//if($party->DesOk()){
+	if($party->DesOk()){
             if($de1 == "true"){
 		$de1val = rand(1,6);	
             }
@@ -150,11 +150,11 @@ class PartiesController extends AppController
             $party->DE_JAUNE = $de2val;
             $party->DE_VIOLET = $de3val;
             $this->Parties->save($party);
-	/**}else{
+	}else{
 	    $de1val = $party->DE_ROUGE ;
             $de2val = $party->DE_JAUNE ;
             $de3val = $party->DE_VIOLET ;
-	}**/
+	}
 
 	    $this->set('de1val',$de1val);
             $this->set('de2val',$de2val);

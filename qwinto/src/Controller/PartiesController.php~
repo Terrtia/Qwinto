@@ -238,11 +238,11 @@ class PartiesController extends AppController
             $feuilles = TableRegistry::get('Feuilles');
             $feuille = $feuilles->find()->first();
 ;           
-	    $feuille->NOMBRES_CROIX = $feuille->NOMBRES_CROIX ++;
+	    $croix = $feuille->NOMBRES_CROIX +1;
+	    $feuille->NOMBRES_CROIX = $croix;
 	    $party = $this->Parties->get(2, [
             'contain' => ['feuilles']
         ]);
-	    $croix = $feuille->NOMBRES_CROIX;
             $party->DE_ROUGE = 0;
 	    $party->DE_JAUNE = 0;
 	    $party->DE_VIOLET = 0;
