@@ -137,6 +137,9 @@ Pénalités :
             datatype: 'json', 
             success : function(res){ 
 	        var resultat = JSON.parse(res);
+		if(resultat.end==1){
+			alert("C'est gagné");
+		}
                 var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
     		kase.innerHTML = resultat.val;
                 de1.setAttribute('src','/img/de0rouge.png');
@@ -160,12 +163,15 @@ Pénalités :
             datatype: 'json', 
             success : function(res){ 
 	        var resultat = JSON.parse(res);
+		
 		de1.setAttribute('src','/img/de0rouge.png');
               	de2.setAttribute('src','/img/de0jaune.png');
 		de3.setAttribute('src','/img/de0orange.png');
 		var cr = document.getElementById("croix");
     		cr.innerHTML = "Croix : "+ resultat.croix;
-                alert(resultat.croix);
+		if(resultat.end==1){
+			alert("C'est la fin...");
+		}
     		
             }, 
             error : function(result, statut, erreur){

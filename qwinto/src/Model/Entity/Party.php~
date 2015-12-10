@@ -28,14 +28,12 @@ class Party extends Entity
     protected $_accessible = [
         '*' => true,
         'ID' => false,
+        'VAL' => 0,
     ];
 
 	public function DesOk(){
-		if (($this->DE_ROUGE == 0) and ($this->DE_ORANGE == 0) and ($this->DE_VIOLET == 0)){
-			return 1;
-		}else{
-			return 0;
-		}
+		return (($this->DE_ROUGE == 0) and ($this->DE_ORANGE == 0) and ($this->DE_VIOLET == 0));
+		
 	}	
 
 }
