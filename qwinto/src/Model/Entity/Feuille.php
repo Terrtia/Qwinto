@@ -222,6 +222,7 @@ class Feuille extends Entity
             if($feuille->remplie(1)) $scoreLigne1 = $feuille->getValeur($ligne, $colonne);
             else $scoreLigne1 = $feuille->getNbValeurs($ligne);
 
+
             /* ligne 3 */
             if($feuille->remplie(2)) $scoreLigne2 = $feuille->getValeur($ligne, $colonne);
             else $scoreLigne1 = $feuille->getNbValeurs($ligne);
@@ -239,6 +240,38 @@ class Feuille extends Entity
     
     public function getNbValeurs($ligne) {
         
+    }
+
+    public function remplie($ligne){
+            if($ligne == 0){
+                    $tab = $this->ligne0_explode();
+                    $i=2;
+                    while($i<12){
+                            if($tab[$i] == "0"){
+                                    return 0;
+                            }
+                            $i++;
+                    }
+            }else if($ligne == 1){
+                    $tab = $this->ligne1_explode();
+                    $i=1;
+                    while($i<11){
+                            if($tab1[$i] == "0"){
+                                    return 0;
+                            }
+                            $i++;
+                    }
+            }else{
+                    $tab = $this->ligne2_explode();
+                    $i=0;
+                    while($i<10){
+                            if($tab[$i] == "0"){
+                                    return 0;
+                            }
+                            $i++;
+                    }
+            }
+            return 1;
     }
 
 

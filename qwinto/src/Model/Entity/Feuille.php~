@@ -61,41 +61,37 @@ class Feuille extends Entity
         return $possible
     }*/
 
-    public function possible($val, $ligne, $colonne) {
+    public function possible($val, $ligne, $colonne, $de1, $de2, $de3) {
         $caseInterdite = -1;
         $caseVide = 0;
-        $res = false;
+        $res = 0;
         $min = 0;
         $max = 0;
 
-        $deRouge = 0;
-        $deJaune = 0;
-        $deViolet = 0;
-
-        $deRouge = $this->partie->DE_ROUGE;
-        $deJaune = $this->partie->DE_JAUNE;
-        $deViolet = $this->partie->DE_VIOLET;
+        $deRouge = $de1;
+        $deJaune = $de2;
+        $deViolet = $de3;
 
 
         $coul = 0;
-        $ligne0 = ligne0_explode;
-        $ligne1 = ligne1_explode;
-        $ligne2 = ligne2_explode;
+        $ligne0 = $this->ligne0_explode();
+        $ligne1 = $this->ligne1_explode();
+        $ligne2 = $this->ligne2_explode();
 
         if($ligne == 0){
-            $templigne = ligne0_explode;
+            $templigne = $ligne0;
             if($deRouge != 0){
                 $coul = 1;
             }
         }
         if($ligne == 1){
-            $templigne = ligne1_explode;
+            $templigne = $ligne1;
             if($deJaune != 0){
                 $coul = 1;
             }
         }
         if($ligne == 2){
-            $templigne = ligne2_explode;
+            $templigne = $ligne2;
             if($deViolet != 0){
                 $coul = 1;
             }
@@ -117,18 +113,18 @@ class Feuille extends Entity
                 }
 
                 if( $min <= $val && $val <= $max){
-                    $res = true;
+                    $res = 1;
                 }
                 if( $max == 0 && $min <= $min){
-                    $res = true;
+                    $res = 1;
                 }
                 if( $min == 0 && $max == 0){
-                    $res = true;
+                    $res = 1;
                 }
             }
         }
 
-        return $res;
+        return 0;
     }
 
 
@@ -215,7 +211,37 @@ class Feuille extends Entity
 
 	}
 
-
+	public function remplie($ligne){
+		if($ligne == 0){
+			$tab = $this->ligne0_explode();
+			$i=2;
+			while($i<12 and $nfini == 1){
+				if($tab[$i] == "0"){
+					return 0;
+				}
+				$i++;
+			}
+		}else if($ligne == 1){
+			$tab = $this->ligne1_explode();
+			$i=1;
+			while($i<11){
+				if($tab1[$i] == "0"){
+					return 0;
+				}
+				$i++;
+			}
+		}else{
+			$tab = $this->ligne2_explode();
+			$i=0;
+			while($i<10){
+				if($tab[$i] == "0"){
+					return 0;
+				}
+				$i++;
+			}
+		}
+		return 1;
+	}
 
 
 }
