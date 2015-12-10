@@ -160,9 +160,12 @@ Pénalités :
             datatype: 'json', 
             success : function(res){ 
 	        var resultat = JSON.parse(res);
-                alert(resultat.val);
-                //var case = document.getElementById(resultat.id);
-    		//case[0].innerHTML = resultat.val;
+                //alert(resultat.id +" "+ resultat.val +" "+resultat.ligne+" "+resultat.colonne );
+		//alert("case/"+resultat.ligne+"/"+resultat.colonne);
+                var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
+		alert(kase.innerHTML);
+    		kase.innerHTML = resultat.val;
+		alert(kase.innerHTML);
             }, 
             error : function(result, statut, erreur){
                 console.log(result);

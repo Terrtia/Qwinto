@@ -124,8 +124,10 @@ class PartiesController extends AppController
     public function change(){
     $this->viewBuilder()->layout(false);
        if($this->request->is('ajax')){
-	 $party = $this->Parties->find()->where(['ID' => 2])->first();
-	
+	// $party = $this->Parties->find()->where(['ID' => 2])->first();
+	$party = $this->Parties->get(2, [
+            'contain' => ['feuilles']
+        ]);
             $de1 = $this->request->data['de1'];
             $de2 = $this->request->data['de2'];
             $de3 = $this->request->data['de3'];
@@ -157,8 +159,7 @@ class PartiesController extends AppController
 
 	    $this->set('de1val',$de1val);
             $this->set('de2val',$de2val);
-            $this->set('de3val',$de3val);	
-	}
+            $this->set('de3val',$de3val);
         }		
     }
 
@@ -194,20 +195,28 @@ class PartiesController extends AppController
         if($this->request->is('ajax')){
             /* récupération de case/numLigne/numColonne */
             $id = $this->request->data['id'];
+
             /* séparation et stockage des données reçues */
             $tab = explode("/",$id); 
             $ligne = $tab[1];
             $colonne = $tab[2];
+
             /* val est le résultat de la somme des dés, mais si on clique la case avant 
              * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
-            $party = $this->Parties->find()->where(['ID' => 2])->first();
+            //$party = $this->Parties->find()->where(['ID' => 2])->first();
+	$party = $this->Parties->get(2, [
+            'contain' => ['feuilles']
+        ]);
             $val = $party->DE_ROUGE + $party->DE_JAUNE + $party->DE_VIOLET;
             $id = 0;
+
             // -1,-1, 0,-2,0,-1,0,-2,0,0,0,0/-1,0,0,0,0,0,-1,0,-2,0,0,-1/0,0,-2,0,-1,0,0,0,0,-2,-1,-1
             /* NE FONCTIONNE PAS : récupération de la chaine du tableau de cases */
-            $feuille = $party->feuilles[0];
-            //$tabCases = $feuille->tableau;
-            //$tabLignes = explode("/",$tabCases);
+	    $string = $party->feuilles[0]->addValeur(0,3,4);
+            $party->feuilles[0]->TABLEAU = $string;
+            //$this->Feuilles->save($party->feuilles[0]);
+           
+
             $this->set('val',$val);
             $this->set('id',$id);
             $this->set('ligne',$ligne);

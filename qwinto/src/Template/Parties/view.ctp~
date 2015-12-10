@@ -81,14 +81,11 @@ Pénalités :
 <div id="score">Score = </div>
 
 
-<?= $this->Html->link(__('ChangeCase'),['action' => 'change_case', $party->ID]) ?>
 
-<<<<<<< HEAD
 <?= $this->Html->link(__('Change'),['action' => 'change', $party->ID]) ?>
 <?= $this->Html->link(__('ChangeCase'),['action' => 'changeCase', $party->ID]) ?>
 
-=======
->>>>>>> 67fab7673534989382ac0f710a52f3d52a1c3929
+
 
 <script type = "text/javascript">
     
@@ -163,9 +160,12 @@ Pénalités :
             datatype: 'json', 
             success : function(res){ 
 	        var resultat = JSON.parse(res);
-                alert(resultat.val);
-                //var case = document.getElementById(resultat.id);
-    		//case[0].innerHTML = resultat.val;
+                //alert(resultat.id +" "+ resultat.val +" "+resultat.ligne+" "+resultat.colonne );
+		//alert("case/"+resultat.ligne+"/"+resultat.colonne);
+                var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
+		alert(kase.innerHTML);
+    		kase[0].innerHTML = resultat.val;
+		alert(kase.innerHTML);
             }, 
             error : function(result, statut, erreur){
                 console.log(result);
