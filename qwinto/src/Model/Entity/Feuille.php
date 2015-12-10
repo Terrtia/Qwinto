@@ -62,35 +62,31 @@ class Feuille extends Entity
     }*/
 
     public function possible($val, $ligne, $colonne, $de1, $de2, $de3) {
-        $caseInterdite = -1;
-        $caseVide = 0;
-        $res = 0;
-        $min = 0;
-        $max = 0;
+      
 
         $deRouge = $de1;
         $deJaune = $de2;
         $deViolet = $de3;
 
-
+	$res = 0;
         $coul = 0;
         $ligne0 = $this->ligne0_explode();
         $ligne1 = $this->ligne1_explode();
         $ligne2 = $this->ligne2_explode();
 
-        if($ligne == 0){
+        if($ligne == "0"){
             $templigne = $ligne0;
             if($deRouge != 0){
                 $coul = 1;
             }
         }
-        if($ligne == 1){
+        if($ligne == "1"){
             $templigne = $ligne1;
             if($deJaune != 0){
                 $coul = 1;
             }
         }
-        if($ligne == 2){
+        if($ligne == "2"){
             $templigne = $ligne2;
             if($deViolet != 0){
                 $coul = 1;
@@ -98,33 +94,39 @@ class Feuille extends Entity
         }
 
         if ( $coul == 1){
-            if((int)$templigne[$colonne] != $caseInterdite && (int)$templigne[$colonne] == $caseVide){
+            if($templigne[intval($colonne)] == "0" or $templigne[intval($colonne)] == "-2"){
                   //recherche valeur precedente
-                for($i=0; $i<$colonne; $i++){
-                    if((int)$templigne[$colonne] != $caseVide){
-                        $min = (int)$templigne[$colonne];
+		$i = intval($colonne);
+		$min = 0;
+                //for($i=0; $i<intval($colonne); $i++){
+		while($min == 0 and $i > 0 ){
+                    if($templigne[$i] != "0" and $templigne[$i] != "-1" and$templigne[$i] != "-2" ){
+                        $min = intval($templigne[$i]);
                     }
+			$i--;
                  }
                  //recherche valeur suivante
-                for($i=$colonne; $i<12; $i++){
-                    if($max == 0 && (int)$templigne[$colonne] != $caseVide){
-                        $max = (int)$templigne[$colonne];
+		$j = intval($colonne);
+		$max = 0;
+                //for($i=intval($colonne); $i<12; $i++){
+		while($max == 0 and $j < 12){
+                    if($templigne[$j] != "0" and $templigne[$j]!="-1" and $templigne[$j]!="-2"){
+                        $max = intval($templigne[$j]);
                     }
+			$j++;
                 }
 
-                if( $min <= $val && $val <= $max){
-                    $res = 1;
-                }
-                if( $max == 0 && $min <= $min){
-                    $res = 1;
-                }
-                if( $min == 0 && $max == 0){
-                    $res = 1;
-                }
-            }
-        }
+                //if( (($min < $val)and($max > $val)) or (($max==0)and($min==0)) or (($min<$val)and($max==0)) or (($min==0)and($max>$val))){
+		if($min < $val){
+			if(($max > $val) or($max == 0)){                   
+		 		$res = 1;
+			}
+		}
+              //  }
+	    }
+	}
 
-        return 0;
+        return $res;
     }
 
 

@@ -211,7 +211,7 @@ class PartiesController extends AppController
 
 	 $val = $party->DE_ROUGE + $party->DE_JAUNE + $party->DE_VIOLET;
             $id = 0;
-        //    if( $feuille->possible($val, $ligne, $colonne) != false ){
+           if( $feuille->possible($val, $ligne, $colonne, $party->DE_ROUGE,$party->DE_JAUNE,$party->DE_VIOLET) == 1 ){
                 $string = $feuille->addValeur($ligne,$colonne,$val);
                 $feuille->TABLEAU = $string;
                 $feuilles->save($feuille);
@@ -228,7 +228,7 @@ class PartiesController extends AppController
                 $this->set('ligne',$ligne);
                 $this->set('colonne',$colonne);
 		$this->set('end',$end);
-          //  }
+            }
         }
     }
 

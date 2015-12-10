@@ -62,35 +62,31 @@ class Feuille extends Entity
     }*/
 
     public function possible($val, $ligne, $colonne, $de1, $de2, $de3) {
-        $caseInterdite = -1;
-        $caseVide = 0;
-        $res = 0;
-        $min = 0;
-        $max = 0;
+      
 
         $deRouge = $de1;
         $deJaune = $de2;
         $deViolet = $de3;
 
-
+	$res = 0;
         $coul = 0;
         $ligne0 = $this->ligne0_explode();
         $ligne1 = $this->ligne1_explode();
         $ligne2 = $this->ligne2_explode();
 
-        if($ligne == 0){
+        if($ligne == "0"){
             $templigne = $ligne0;
             if($deRouge != 0){
                 $coul = 1;
             }
         }
-        if($ligne == 1){
+        if($ligne == "1"){
             $templigne = $ligne1;
             if($deJaune != 0){
                 $coul = 1;
             }
         }
-        if($ligne == 2){
+        if($ligne == "2"){
             $templigne = $ligne2;
             if($deViolet != 0){
                 $coul = 1;
@@ -98,33 +94,39 @@ class Feuille extends Entity
         }
 
         if ( $coul == 1){
-            if((int)$templigne[$colonne] != $caseInterdite && (int)$templigne[$colonne] == $caseVide){
+            if($templigne[intval($colonne)] == "0"){
                   //recherche valeur precedente
-                for($i=0; $i<$colonne; $i++){
-                    if((int)$templigne[$colonne] != $caseVide){
-                        $min = (int)$templigne[$colonne];
+		$i = intval($colonne);
+		$min = 0;
+                //for($i=0; $i<intval($colonne); $i++){
+		while($min == 0 and $i > 0 ){
+                    if($templigne[$i] != "0" and $templigne[$i] != "-1" and$templigne[$i] != "-2" ){
+                        $min = intval($templigne[$i]);
                     }
+			$i--;
                  }
                  //recherche valeur suivante
-                for($i=$colonne; $i<12; $i++){
-                    if($max == 0 && (int)$templigne[$colonne] != $caseVide){
-                        $max = (int)$templigne[$colonne];
+		$j = intval($colonne);
+		$max = 0;
+                //for($i=intval($colonne); $i<12; $i++){
+		while($max == 0 and $j < 12){
+                    if($templigne[$j] != "0" and $templigne[$j]!="-1" and $templigne[$j]!="-2"){
+                        $max = intval($templigne[$j]);
                     }
+			$j++;
                 }
 
-                if( $min <= $val && $val <= $max){
-                    $res = 1;
-                }
-                if( $max == 0 && $min <= $min){
-                    $res = 1;
-                }
-                if( $min == 0 && $max == 0){
-                    $res = 1;
-                }
-            }
-        }
+                //if( (($min < $val)and($max > $val)) or (($max==0)and($min==0)) or (($min<$val)and($max==0)) or (($min==0)and($max>$val))){
+		if($min < $val){
+			if(($max > $val) or($max == 0)){                   
+		 		$res = 1;
+			}
+		}
+              //  }
+	    }
+	}
 
-        return 0;
+        return $res;
     }
 
 
@@ -210,35 +212,87 @@ class Feuille extends Entity
 		return $end;
 
 	}
+        
+        public function score() {
+            $score = "";
+            
+            /* score ligne 1 */
+            if($this->remplie(0)) $scoreLigne0 = $this->getValeur(0, 11);
+            else $scoreLigne0 = $this->getNbValeurs($ligne);
 
-	public function remplie($ligne){
-		if($ligne == 0){
-			$tab = $this->ligne0_explode();
-			$i=2;
-			while($i<12){
-				if($tab[$i] == "0"){
-					return 0;
-				}
-				$i++;
-			}
-		}else if($ligne == 1){
-			$tab = $this->ligne1_explode();
-			$i=1;
-			while($i<11){
-				if($tab1[$i] == "0"){
-					return 0;
-				}
-				$i++;
-			}
-		}else{
-			$tab = $this->ligne2_explode();
-			$i=0;
-			while($i<10){
-				if($tab[$i] == "0"){
-					return 0;
-				}
-				$i++;
-			}
+            /* ligne 2 */
+            if($this->remplie(1)) $scoreLigne1 = $this->getValeur(1, 10);
+            else $scoreLigne1 = $this->getNbValeurs($ligne);
+
+            /* ligne 3 */
+            if($this->remplie(2)) $scoreLigne2 = $this->getValeur(2, 9);
+            else $scoreLigne2 = $this->getNbValeurs($ligne);
+            
+            /* score pentagones */
+            if($this->remplieColonne(3)) $scorePent0 = $this->getValeur (0, 3);
+            if($this->remplieColonne(8)) $scorePent1 = $this->getValeur (1, 8);
+            if($this->remplieColonne(2)) $scorePent2 = $this->getValeur (2, 2);
+            if($this->remplieColonne(9)) $scorePent3 = $this->getValeur (2, 9);
+            
+            return $score;
+        }
+
+    public function getValeur($ligne, $colonne) {
+        if($ligne == 0) $tab = $this->ligne0_explode();
+        else if($ligne == 1) $tab = $this->ligne1_explode();
+        else $tab = $this->ligne2_explode();
+        
+        return $tab[$colonne];
+    }
+    
+    public function getNbValeurs($ligne) {
+        $nbVal = 0;
+        for($i = 0;$i < 12;$i++) {
+            if(getValeur($ligne,$i) > 0) {
+                $nbVal++;
+            }
+        }
+        return $nbVal;
+    }
+
+    public function remplie($ligne){
+            if($ligne == 0){
+                    $tab = $this->ligne0_explode();
+                    $i=2;
+                    while($i<12){
+                            if($tab[$i] == "0"){
+                                    return 0;
+                            }
+                            $i++;
+                    }
+            }else if($ligne == 1){
+                    $tab = $this->ligne1_explode();
+                    $i=1;
+                    while($i<11){
+                            if($tab1[$i] == "0"){
+                                    return 0;
+                            }
+                            $i++;
+                    }
+            }else{
+                    $tab = $this->ligne2_explode();
+                    $i=0;
+                    while($i<10){
+                            if($tab[$i] == "0"){
+                                    return 0;
+                            }
+                            $i++;
+                    }
+            }
+            return 1;
+    }
+
+	public function rempliecol($col){
+		$tab1 = $this->ligne0_explode();
+	        $tab2 = $this->ligne1_explode();
+       		$tab3 = $this->ligne2_explode();
+		if($tab1[$col] == "0" or $tab2[$col] == "0" or $tab3[$col] == "0"){
+			return 0;
 		}
 		return 1;
 	}
