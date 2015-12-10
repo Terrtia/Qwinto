@@ -177,7 +177,7 @@ class PartiesController extends AppController
             //$feuille = $this->Feuilles->find()->first();
             $feuille = $feuilles->find()->first();
             $string = $feuille->addValeur(0,3,4);
-            //$string = '-1,-1,4,18,0,-2,0,0,0,0,0,0/-1,0,0,0,0,0,-2,0,0,0,0,-1/0,0,0,0,-2,0,0,0,0,0,-1,-1/';
+            //$string = '-1,-1,0,0,0,-2,0,0,0,0,0,0/-1,0,0,0,0,0,-2,0,0,0,0,-1/0,0,0,0,-2,0,0,0,0,0,-1,-1/';
             $feuille->TABLEAU = $string;
             $this->Feuilles->save($feuille);
 
@@ -202,10 +202,6 @@ class PartiesController extends AppController
             $ligne = $tab[1];
             $colonne = $tab[2];
 
-            
-           
-
-
             /* val est le résultat de la somme des dés, mais si on clique la case avant 
              * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
             //$party = $this->Parties->find()->where(['ID' => 2])->first();
@@ -215,7 +211,7 @@ class PartiesController extends AppController
 
 	 $val = $party->DE_ROUGE + $party->DE_JAUNE + $party->DE_VIOLET;
             $id = 0;
-        //    if( $feuille->possible($val, $ligne, $colonne) != false ){
+           if( $feuille->possible($val, $ligne, $colonne, $party->DE_ROUGE,$party->DE_JAUNE,$party->DE_VIOLET) == 1 ){
                 $string = $feuille->addValeur($ligne,$colonne,$val);
                 $feuille->TABLEAU = $string;
                 $feuilles->save($feuille);
@@ -224,12 +220,22 @@ class PartiesController extends AppController
 	            $party->DE_JAUNE = 0;
 	            $party->DE_VIOLET = 0;
 	            $this->Parties->save($party);
+		
+		$end = $feuille->end();
+                
+                /* marche pas */
+                //$score = 0;
+                //if($end == 1) $score = $feuille->score();
 
                 $this->set('val',$val);
                 $this->set('id',$id);
                 $this->set('ligne',$ligne);
                 $this->set('colonne',$colonne);
-          //  }
+		$this->set('end',$end);
+
+		$this->set('score',$score);
+            }
+
         }
     }
 
@@ -257,9 +263,24 @@ class PartiesController extends AppController
    
             $feuilles->save($feuille);
 	    $end = $feuille->end();
+            /* marche pas et bloque l'ajax, mais incrémente les croix sans les afficher */
+            $score = 0;
+            if($feuille->end() == 1){
+		 $score = $feuille->score();
+	    }
+            
             $this->set('croix',$croix);
 	    $this->set('end',$end);
+            $this->set('score',$score);
         }
+    }
+
+    public function nouveau(){
+        $feuilles = TableRegistry::get('Feuilles');
+        $feuille = $feuilles->find()->first();
+        $feuille->TABLEAU = '-1,-1,0,0,0,0,0,0,0,0,0,0/-1,0,0,0,0,0,0,0,0,0,0,-1/0,0,0,0,0,0,0,0,0,0,-1,-1/';
+        $feuille->NOMBRES_CROIX = 0;
+        $feuilles->save($feuille);
     }
    
 }

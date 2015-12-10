@@ -208,7 +208,7 @@ class PartiesController extends AppController
 
 	 $val = $party->DE_ROUGE + $party->DE_JAUNE + $party->DE_VIOLET;
             $id = 0;
-        //    if( $feuille->possible($val, $ligne, $colonne) != false ){
+           if( $feuille->possible($val, $ligne, $colonne, $party->DE_ROUGE,$party->DE_JAUNE,$party->DE_VIOLET) == 1 ){
                 $string = $feuille->addValeur($ligne,$colonne,$val);
                 $feuille->TABLEAU = $string;
                 $feuilles->save($feuille);
@@ -219,7 +219,7 @@ class PartiesController extends AppController
 	            $this->Parties->save($party);
 		
 		$end = $feuille->end();
-                
+             
                 /* calcul du score si la partie est finie et remise à 0 de la bdd */
                 $score = 0;
                 if($end == 1){
@@ -232,8 +232,10 @@ class PartiesController extends AppController
                 $this->set('ligne',$ligne);
                 $this->set('colonne',$colonne);
 		$this->set('end',$end);
+
 		$this->set('score',$score);
-          //  }
+            }
+
         }
     }
 
