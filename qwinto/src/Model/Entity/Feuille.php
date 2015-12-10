@@ -211,7 +211,37 @@ class Feuille extends Entity
 
 	}
 
-
+	public function remplie($ligne){
+		if($ligne == 0){
+			$tab = $this->ligne0_explode();
+			$i=2;
+			while($i<12){
+				if($tab[$i] == "0"){
+					return 0;
+				}
+				$i++;
+			}
+		}else if($ligne == 1){
+			$tab = $this->ligne1_explode();
+			$i=1;
+			while($i<11){
+				if($tab1[$i] == "0"){
+					return 0;
+				}
+				$i++;
+			}
+		}else{
+			$tab = $this->ligne2_explode();
+			$i=0;
+			while($i<10){
+				if($tab[$i] == "0"){
+					return 0;
+				}
+				$i++;
+			}
+		}
+		return 1;
+	}
 
 
 }
