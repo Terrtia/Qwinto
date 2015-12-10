@@ -140,7 +140,12 @@
             success : function(res){ 
 	        var resultat = JSON.parse(res);
 		if(resultat.end==1){
-			alert("C'est gagné");
+			var r = confirm("C'est gagné");
+            if (r == true) {
+             document.location.href="/parties/index";
+            } else {
+               document.location.href="/parties/index";
+            }
 		}
                 var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
     		kase.innerHTML = resultat.val;
