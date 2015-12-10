@@ -72,7 +72,15 @@ class Feuille extends Entity
         $deJaune = 0;
         $deViolet = 0;
 
+        $deRouge = $this->partie->DE_ROUGE;
+        $deJaune = $this->partie->DE_JAUNE;
+        $deViolet = $this->partie->DE_VIOLET;
+
+
         $coul = 0;
+        $ligne0 = ligne0_explode;
+        $ligne1 = ligne1_explode;
+        $ligne2 = ligne2_explode;
 
         if($ligne == 0){
             $templigne = ligne0_explode;
