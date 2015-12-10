@@ -24,7 +24,7 @@
             <?php
             for($i=1;$i<11;$i++){
 		$temp = 'case/1/'.$i;
-                if($tableau1[$i] == -1) echo '<td width=60 background="/img/jaune.png"></td>';
+                if($tableau1[$i] == -1) echo '<td width=60 background="/Qwinto/qwinto/img/jaune.png"></td>';
                 else if($tableau1[$i] == -2) {
                     echo '<td width=60 background="/img/pentaJaune.png" id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
                     if($tableau1[$i]>0) echo $tableau1[$i];
@@ -44,7 +44,7 @@
             <?php
             for($i=0;$i<10;$i++){
 		$temp = 'case/2/'.$i;
-                if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
+                if($tableau2[$i] == -1) echo '<td width=60 background=/Qwinto/qwinto/img/orange.png></td>';
                 else if($tableau2[$i] == -2) { 
                     echo '<td width=60 background="/img/pentaOrange.png" id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
                     if($tableau2[$i]>0) echo $tableau2[$i];
@@ -164,7 +164,7 @@ Pénalités :
 		//alert("case/"+resultat.ligne+"/"+resultat.colonne);
                 var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
 		alert(kase.innerHTML);
-    		kase[0].innerHTML = resultat.val;
+    		kase.innerHTML = resultat.val;
 		alert(kase.innerHTML);
             }, 
             error : function(result, statut, erreur){
