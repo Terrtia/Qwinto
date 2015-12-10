@@ -212,20 +212,25 @@ class Feuille extends Entity
 	}
         
         public function score() {
-            $score = 0;
+            $score = "";
             
             /* score ligne 1 */
-            if($feuille->remplie(0)) $scoreLigne0 = $feuille->getValeur($ligne, $colonne);
-            else $scoreLigne1 = $feuille->getNbValeurs($ligne);
+            if($this->remplie(0)) $scoreLigne0 = $this->getValeur(0, 11);
+            else $scoreLigne0 = $this->getNbValeurs($ligne);
 
             /* ligne 2 */
-            if($feuille->remplie(1)) $scoreLigne1 = $feuille->getValeur($ligne, $colonne);
-            else $scoreLigne1 = $feuille->getNbValeurs($ligne);
-
+            if($this->remplie(1)) $scoreLigne1 = $this->getValeur(1, 10);
+            else $scoreLigne1 = $this->getNbValeurs($ligne);
 
             /* ligne 3 */
-            if($feuille->remplie(2)) $scoreLigne2 = $feuille->getValeur($ligne, $colonne);
-            else $scoreLigne1 = $feuille->getNbValeurs($ligne);
+            if($this->remplie(2)) $scoreLigne2 = $this->getValeur(2, 9);
+            else $scoreLigne2 = $this->getNbValeurs($ligne);
+            
+            /* score pentagones */
+            if($this->remplieColonne(3)) $scorePent0 = $this->getValeur (0, 3);
+            if($this->remplieColonne(8)) $scorePent1 = $this->getValeur (1, 8);
+            if($this->remplieColonne(2)) $scorePent2 = $this->getValeur (2, 2);
+            if($this->remplieColonne(9)) $scorePent3 = $this->getValeur (2, 9);
             
             return $score;
         }
@@ -239,7 +244,13 @@ class Feuille extends Entity
     }
     
     public function getNbValeurs($ligne) {
-        
+        $nbVal = 0;
+        for($i = 0;$i < 12;$i++) {
+            if(getValeur($ligne,$i) > 0) {
+                $nbVal++;
+            }
+        }
+        return $nbVal;
     }
 
     public function remplie($ligne){
