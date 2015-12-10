@@ -101,4 +101,50 @@ class Feuille extends Entity
         }
         return $string;
     }
+
+	public function end(){
+		$end = 0;
+		$nb_finis = 3;
+		
+		$tab1 = $this->ligne0_explode();
+	        $tab2 = $this->ligne1_explode();
+       		$tab3 = $this->ligne2_explode();
+		$i=2;
+		$nfini = 1;
+		while($i<12 and $nfini == 1){
+			if($tab1[$i] == "0"){
+				$nfini = 0;
+				$nb_finis --;
+			}
+			$i++;
+		}
+		$i=1;
+		$nfini = 1;
+		while($i<11 and $nfini == 1){
+			if($tab2[$i] == "0"){
+				$nfini = 0;
+				$nb_finis --;
+			}
+			$i++;
+		}
+		$i=0;
+		$nfini = 1;
+		while($i<10 and $nfini == 1){
+			if($tab3[$i] == "0"){
+				$nfini = 0;
+				$nb_finis --;
+			}
+			$i++;
+		}
+
+		if($this->NOMBRES_CROIX > 3 or $nb_finis == 2){
+			$end = 1;
+		}
+		return $end;
+
+	}
+
+
+
+
 }

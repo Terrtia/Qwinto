@@ -29,4 +29,122 @@ class Feuille extends Entity
         '*' => true,
         'ID' => false,
     ];
+
+    public function ligne0_explode(){
+            $ligne = explode("/", $this->TABLEAU);
+            $ligne0 = explode(',', $ligne[0]);
+            return $ligne0;
+    }
+
+    public function ligne1_explode(){
+            $ligne = explode("/", $this->TABLEAU);
+            $ligne1 = explode(',', $ligne[1]);
+            return $ligne1;
+    }
+
+    public function ligne2_explode(){
+            $ligne = explode("/", $this->TABLEAU);
+            $ligne2 = explode(',', $ligne[2]);
+            return $ligne2;
+    }
+
+    /*public function possible($val,$nbligne,$nbcases){
+        $ligne = explode("/",$this->TABLEAU);
+        $lignetest = explode(',',$ligne[nbligne]);
+        $possible = TRUE;
+        if($lignetest[$nbcases] == -1){
+                return FALSE;
+        }
+        for($i = 0;$i <= nbcases;i++){
+                $possible = val > (int)$lignetest[$i] ;
+        }
+        return $possible
+    }*/
+
+     public function addValeur($noligne,$nocase,$val){
+        $tab1 = $this->ligne0_explode();
+        $tab2 = $this->ligne1_explode();
+        $tab3 = $this->ligne2_explode();
+        $string = null;
+
+        if($noligne == 0){
+            $tab1[$nocase] = $val;
+            
+        }else if ($noligne == 1){
+            $tab2[$nocase] = $val;
+
+        }else{
+            $tab3[$nocase] = $val;
+        }
+
+        for($i = 0 ; $i<12 ; $i++){
+            if($i != 11){
+                $string = $string.$tab1[$i].",";
+            }else{
+                $string = $string.$tab1[$i]."/";
+            }
+        }
+        for($i = 0 ; $i<12 ; $i++){
+            if($i != 11){
+                $string = $string.$tab2[$i].",";
+            }else{
+                $string = $string.$tab2[$i]."/";
+            }
+        }
+
+        for($i = 0 ; $i<12 ; $i++){
+            if($i != 11){
+                $string = $string.$tab3[$i].",";
+            }else{
+                $string = $string.$tab3[$i]."/";
+            }
+        }
+        return $string;
+    }
+
+	public function end(){
+		$end = 0;
+		$nb_finis = 3;
+		
+		$tab1 = $this->ligne0_explode();
+	        $tab2 = $this->ligne1_explode();
+       		$tab3 = $this->ligne2_explode();
+		$i=2;
+		$nfini = 1;
+		while($i<12 and $nfini == 1){
+			if($tab1[$i] == "0"){
+				$nfini = 0;
+				$nb_finis --;
+			}
+			$i++;
+		}
+		$i=1;
+		$nfini = 1;
+		while($i<11 and $nfini == 1){
+			if($tab2[$i] == "0"){
+				$nfini = 0;
+				$nb_finis --;
+			}
+			$i++;
+		}
+		$i=0;
+		$nfini = 1;
+		while($i<10 and $nfini == 1){
+			if($tab3[$i] == "0"){
+				$nfini = 0;
+				$nb_finis --;
+			}
+			$i++;
+		}
+
+		if($this->NOMBRE_CROIX > 3 or $nb_finis == 2){
+			$end = 1;
+		}
+		return $end;
+
+	}
+
+
+
+
 }

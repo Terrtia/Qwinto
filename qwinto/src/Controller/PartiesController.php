@@ -254,7 +254,9 @@ class PartiesController extends AppController
              * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
    
             $feuilles->save($feuille);
+	    $end = $feuille->end();
             $this->set('croix',$croix);
+	    $this->set('end',$end);
         }
     }
    

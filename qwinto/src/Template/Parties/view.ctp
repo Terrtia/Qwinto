@@ -165,6 +165,10 @@ Pénalités :
 		de3.setAttribute('src','/img/de0orange.png');
 		var cr = document.getElementById("croix");
     		cr.innerHTML = "Croix : "+ resultat.croix;
+		if(resultat.end==1){
+			alert();
+			//document.location.href="";
+		}
     		
             }, 
             error : function(result, statut, erreur){
