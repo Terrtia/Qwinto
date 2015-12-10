@@ -210,8 +210,36 @@ class Feuille extends Entity
 		return $end;
 
 	}
+        
+        public function score() {
+            $score = 0;
+            
+            /* score ligne 1 */
+            if($feuille->remplie(0)) $scoreLigne0 = $feuille->getValeur($ligne, $colonne);
+            else $scoreLigne1 = $feuille->getNbValeurs($ligne);
 
+            /* ligne 2 */
+            if($feuille->remplie(1)) $scoreLigne1 = $feuille->getValeur($ligne, $colonne);
+            else $scoreLigne1 = $feuille->getNbValeurs($ligne);
 
+            /* ligne 3 */
+            if($feuille->remplie(2)) $scoreLigne2 = $feuille->getValeur($ligne, $colonne);
+            else $scoreLigne1 = $feuille->getNbValeurs($ligne);
+            
+            return $score;
+        }
+
+    public function getValeur($ligne, $colonne) {
+        if($ligne == 0) $tab = $this->ligne0_explode();
+        else if($ligne == 1) $tab = $this->ligne1_explode();
+        else $tab = $this->ligne2_explode();
+        
+        return $tab[$colonne];
+    }
+    
+    public function getNbValeurs($ligne) {
+        
+    }
 
 
 }

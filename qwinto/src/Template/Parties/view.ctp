@@ -24,7 +24,7 @@
             <?php
             for($i=1;$i<11;$i++){
 		$temp = 'case/1/'.$i;
-                if($tableau1[$i] == -1) echo '<td width=60 background="/Qwinto/qwinto/img/jaune.png"></td>';
+                if($tableau1[$i] == -1) echo '<td width=60 background="/img/jaune.png"></td>';
                 else if($tableau1[$i] == -2) {
                     echo '<td width=60 background="/img/pentaJaune.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
                     if($tableau1[$i]>0) echo $tableau1[$i];
@@ -44,7 +44,7 @@
             <?php
             for($i=0;$i<10;$i++){
 		$temp = 'case/2/'.$i;
-                if($tableau2[$i] == -1) echo '<td width=60 background=/Qwinto/qwinto/img/orange.png></td>';
+                if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
                 else if($tableau2[$i] == -2) { 
                     echo '<td width=60 background="/img/pentaOrange.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
                     if($tableau2[$i]>0) echo $tableau2[$i];
@@ -75,10 +75,8 @@
 <br><br>
 <button onclick="ajouterCroix()">Ajouter Croix</button>
 <br><br>
-<p id ="croix">Croix : 0</p>
 
-Pénalités :  
-<div id="penalites"></p>
+<p id ="croix">Pénalités : 0</p>
 
 <br><br>
 <div id="score">Score = </div>
@@ -168,7 +166,7 @@ Pénalités :
               	de2.setAttribute('src','/img/de0jaune.png');
 		de3.setAttribute('src','/img/de0orange.png');
 		var cr = document.getElementById("croix");
-    		cr.innerHTML = "Croix : "+ resultat.croix;
+    		cr.innerHTML = "Pénalités : "+ resultat.croix;
 		if(resultat.end==1){
 			alert("C'est la fin...");
 			window.location;

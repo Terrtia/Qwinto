@@ -202,10 +202,6 @@ class PartiesController extends AppController
             $ligne = $tab[1];
             $colonne = $tab[2];
 
-            
-           
-
-
             /* val est le résultat de la somme des dés, mais si on clique la case avant 
              * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
             //$party = $this->Parties->find()->where(['ID' => 2])->first();
