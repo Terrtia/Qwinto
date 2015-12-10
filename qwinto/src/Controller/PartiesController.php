@@ -123,31 +123,42 @@ class PartiesController extends AppController
     public function change(){
     $this->viewBuilder()->layout(false);
        if($this->request->is('ajax')){
+	// $party = $this->Parties->find()->where(['ID' => 2])->first();
+	$party = $this->Parties->get(2, [
+            'contain' => ['feuilles']
+        ]);
             $de1 = $this->request->data['de1'];
             $de2 = $this->request->data['de2'];
             $de3 = $this->request->data['de3'];
-            $de1val = 0;
+	$de1val = 0;
             $de2val = 0;
             $de3val = 0;
+//a remettre pour le final empeche le jouer de relancer les des
+	//if($party->DesOk()){
             if($de1 == "true"){
 		$de1val = rand(1,6);	
             }
+
             if($de2 == "true"){
 		$de2val = rand(1,6);
             }
             if($de3 == "true"){
 		$de3val = rand(1,6);
             }
-              
-            $party = $this->Parties->find()->where(['ID' => 2])->first();
+        
             $party->DE_ROUGE = $de1val;
             $party->DE_JAUNE = $de2val;
             $party->DE_VIOLET = $de3val;
             $this->Parties->save($party);
+	/**}else{
+	    $de1val = $party->DE_ROUGE ;
+            $de2val = $party->DE_JAUNE ;
+            $de3val = $party->DE_VIOLET ;
+	}**/
 
 	    $this->set('de1val',$de1val);
             $this->set('de2val',$de2val);
-            $this->set('de3val',$de3val);	
+            $this->set('de3val',$de3val);
         }		
     }
 
@@ -185,15 +196,35 @@ class PartiesController extends AppController
             $feuille = $feuilles->find()->first();
 ;            /* récupération de case/numLigne/numColonne */
             $id = $this->request->data['id'];
+
             /* séparation et stockage des données reçues */
             $tab = explode("/",$id); 
             $ligne = $tab[1];
             $colonne = $tab[2];
+<<<<<<< HEAD
             /* val devrait prendre la valeur à mettre dans la case, id j'en sais rien */
             $val = 2;
             $string = $feuille->addValeur($ligne,$colonne,$val);
             $feuille->TABLEAU = $string;
             $feuilles->save($feuille);
+=======
+
+            /* val est le résultat de la somme des dés, mais si on clique la case avant 
+             * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
+            //$party = $this->Parties->find()->where(['ID' => 2])->first();
+	$party = $this->Parties->get(2, [
+            'contain' => ['feuilles']
+        ]);
+            $val = $party->DE_ROUGE + $party->DE_JAUNE + $party->DE_VIOLET;
+            $id = 0;
+
+            // -1,-1, 0,-2,0,-1,0,-2,0,0,0,0/-1,0,0,0,0,0,-1,0,-2,0,0,-1/0,0,-2,0,-1,0,0,0,0,-2,-1,-1
+            /* NE FONCTIONNE PAS : récupération de la chaine du tableau de cases */
+	    $string = $party->feuilles[0]->addValeur(0,3,4);
+            $party->feuilles[0]->TABLEAU = $string;
+            //$this->Feuilles->save($party->feuilles[0]);
+           
+>>>>>>> 6f441a9121b0ae14f3b88887af2e9f954efe3443
 
             $this->set('val',$val);
             $this->set('id',$id);
