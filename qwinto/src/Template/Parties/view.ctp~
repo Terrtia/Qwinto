@@ -138,7 +138,7 @@ Pénalités :
             success : function(res){ 
 	        var resultat = JSON.parse(res);
 		if(resultat.end==1){
-			alert(resultat.end);
+			alert("C'est gagné");
 		}
                 var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
     		kase.innerHTML = resultat.val;
@@ -170,7 +170,7 @@ Pénalités :
 		var cr = document.getElementById("croix");
     		cr.innerHTML = "Croix : "+ resultat.croix;
 		if(resultat.end==1){
-			alert();
+			alert("C'est la fin...");
 		}
     		
             }, 

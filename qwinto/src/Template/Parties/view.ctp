@@ -171,6 +171,7 @@ Pénalités :
     		cr.innerHTML = "Croix : "+ resultat.croix;
 		if(resultat.end==1){
 			alert("C'est la fin...");
+			window.location;
 		}
     		
             }, 
