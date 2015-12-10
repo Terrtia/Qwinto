@@ -32,7 +32,7 @@ class Party extends Entity
     ];
 
 	public function DesOk(){
-		return (($this->DE_ROUGE == 0) and ($this->DE_ORANGE == 0) and ($this->DE_VIOLET == 0));
+		return (($this->DE_ROUGE == 0) and ($this->DE_JAUNE == 0) and ($this->DE_VIOLET == 0));
 		
 	}	
 

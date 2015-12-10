@@ -73,6 +73,11 @@ class Feuille extends Entity
         $ligne0 = $this->ligne0_explode();
         $ligne1 = $this->ligne1_explode();
         $ligne2 = $this->ligne2_explode();
+	$col = intval($colonne);
+	$val1 = intval($ligne0[$col]);
+	$val2 = intval($ligne1[$col]);
+	$val3 = intval($ligne2[$col]);
+	
 
         if($ligne == "0"){
             $templigne = $ligne0;
@@ -98,32 +103,32 @@ class Feuille extends Entity
                   //recherche valeur precedente
 		$i = intval($colonne);
 		$min = 0;
-                //for($i=0; $i<intval($colonne); $i++){
 		while($min == 0 and $i > 0 ){
                     if($templigne[$i] != "0" and $templigne[$i] != "-1" and$templigne[$i] != "-2" ){
                         $min = intval($templigne[$i]);
                     }
-			$i--;
+		    $i--;
                  }
                  //recherche valeur suivante
 		$j = intval($colonne);
 		$max = 0;
-                //for($i=intval($colonne); $i<12; $i++){
 		while($max == 0 and $j < 12){
                     if($templigne[$j] != "0" and $templigne[$j]!="-1" and $templigne[$j]!="-2"){
                         $max = intval($templigne[$j]);
                     }
-			$j++;
+		    $j++;
                 }
 
-                //if( (($min < $val)and($max > $val)) or (($max==0)and($min==0)) or (($min<$val)and($max==0)) or (($min==0)and($max>$val))){
 		if($min < $val){
-			if(($max > $val) or($max == 0)){                   
-		 		$res = 1;
-			}
+		    if(($max > $val) or($max == 0)){                   
+		 	$res = 1;
+		    }
 		}
-              //  }
 	    }
+	}
+
+	if($val1 == $val or $val2 == $val or $val3 == $val){
+		$res = 0;
 	}
 
         return $res;
