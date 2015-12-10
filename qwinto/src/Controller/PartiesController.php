@@ -260,5 +260,13 @@ class PartiesController extends AppController
 	    $this->set('end',$end);
         }
     }
+
+    public function nouveau(){
+        $feuilles = TableRegistry::get('Feuilles');
+        $feuille = $feuilles->find()->first();
+        $feuille->TABLEAU = '-1,-1,0,0,0,0,0,0,0,0,0,0/-1,0,0,0,0,0,0,0,0,0,0,-1/0,0,0,0,0,0,0,0,0,0,-1,-1/';
+        $feuille->NOMBRES_CROIX = 0;
+        $feuilles->save($feuille);
+    }
    
 }

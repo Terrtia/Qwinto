@@ -1,17 +1,21 @@
+
+    <!--<ul class="side-nav">
+        <li><button id="nouveau" onclick="/Qwinto/qwinto/parties/nouveau">Nouvelle partie</button></li>
+    </ul>-->
 <table width="720">
     <tr height=60>
         <td colspan=2 width=120 bgcolor = 'WHITE'>  </td>
             <?php
             for($i=2;$i<12;$i++){
 		$temp = 'case/0/'.$i;
-                if($tableau[$i] == -1) echo '<td width=60 background=/img/rouge.png></td>';
+                if($tableau[$i] == -1) echo '<td width=60 style="text-align:center" background=/img/rouge.png></td>';
                 else if($tableau[$i] == -2) {
-                    echo '<td width=60 background="/img/pentaRouge.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
-                    if($tableau[$i]>0) echo $tableau[$i];
+                    echo '<td width=60 style="text-align:center" background="/img/pentaRouge.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
+                    if($tableau[$i]>0) echo '<font size="4.5"><b>'.$tableau[$i].'</b>';
                     echo'</td>';
                 }else{
-                    echo'<td width=60 background=/img/rondRouge.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
-                    if($tableau[$i]>0) echo $tableau[$i];
+                    echo'<td width=60 style="text-align:center" background=/img/rondRouge.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
+                    if($tableau[$i]>0) echo '<font size="4.5"><b>'.$tableau[$i].'</b>';
                     echo'</td>';
                 };
             }
@@ -24,14 +28,14 @@
             <?php
             for($i=1;$i<11;$i++){
 		$temp = 'case/1/'.$i;
-                if($tableau1[$i] == -1) echo '<td width=60 background="/img/jaune.png"></td>';
+                if($tableau1[$i] == -1) echo '<td width=60 style="text-align:center" background="/img/jaune.png"></td>';
                 else if($tableau1[$i] == -2) {
-                    echo '<td width=60 background="/img/pentaJaune.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
-                    if($tableau1[$i]>0) echo $tableau1[$i];
+                    echo '<td width=60 style="text-align:center" background="/img/pentaJaune.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
+                    if($tableau1[$i]>0) echo '<font size="4.5"><b>'.$tableau1[$i].'</b>';
                     echo'</td>';
                 }else {
-                    echo'<td  width=60 background=/img/rondJaune.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
-                    if($tableau1[$i]>0)echo $tableau1[$i];  
+                    echo'<td  width=60 style="text-align:center" background=/img/rondJaune.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
+                    if($tableau1[$i]>0)echo'<font size="4.5"><b>'.$tableau1[$i].'</b>';  
                     echo'</td>'; 
                 };
             }
@@ -44,14 +48,14 @@
             <?php
             for($i=0;$i<10;$i++){
 		$temp = 'case/2/'.$i;
-                if($tableau2[$i] == -1) echo '<td width=60 background=/img/orange.png></td>';
+                if($tableau2[$i] == -1) echo '<td width=60 style="text-align:center" background=/img/orange.png></td>';
                 else if($tableau2[$i] == -2) { 
-                    echo '<td width=60 background="/img/pentaOrange.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
-                    if($tableau2[$i]>0) echo $tableau2[$i];
+                    echo '<td width=60 style="text-align:center" background="/img/pentaOrange.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
+                    if($tableau2[$i]>0) echo '<font size="4.5"><b>'.$tableau2[$i].'</b>';
                     echo'</td>';
                 }else {
-                    echo'<td width=60 background=/img/rondOrange.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
-                    if($tableau2[$i]>0) echo $tableau2[$i];
+                    echo'<td width=60 style="text-align:center" background=/img/rondOrange.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
+                    if($tableau2[$i]>0) echo '<font size="4.5"><b>'.$tableau2[$i].'</b>';
                     echo'</td>';
                 };
             }
@@ -83,8 +87,8 @@
 
 
 
-<?= $this->Html->link(__('Change'),['action' => 'change', $party->ID]) ?>
-<?= $this->Html->link(__('ChangeCase'),['action' => 'changeCase', $party->ID]) ?>
+<!--<?= $this->Html->link(__('Change'),['action' => 'change', $party->ID]) ?>
+<?= $this->Html->link(__('ChangeCase'),['action' => 'changeCase', $party->ID]) ?>-->
 
 
 
@@ -96,7 +100,7 @@
             var de3Check = document.getElementById("checkbox3").checked;
 	
             $.ajax({
-                url:"/parties/change",
+                url:"/parties/change",  // ne pas oublier d'enlever /Qwinto/qwinto partout si vous lancer cake server
                 data: {
                     de1 : de1Check,
                     de2 : de2Check,
@@ -127,7 +131,7 @@
     
     function affecter(id){
             $.ajax({
-            url:"/parties/modifcase",
+            url:"/parties/modifcase", // ne pas oublier d'enlever /Qwinto/qwinto partout si vous lancer cake server
             data: {
                 id: id
             },
@@ -156,7 +160,7 @@
 
 	function ajouterCroix(){
             $.ajax({
-            url:"/parties/ajoutcroix",
+            url:"/parties/ajoutcroix",    // ne pas oublier d'enlever /Qwinto/qwinto partout si vous lancer cake server
             type: 'post',
             datatype: 'json', 
             success : function(res){ 
@@ -168,8 +172,13 @@
 		var cr = document.getElementById("croix");
     		cr.innerHTML = "Pénalités : "+ resultat.croix;
 		if(resultat.end==1){
-			alert("C'est la fin...");
-			window.location;
+            var r = confirm("C'est perdu ...");
+            if (r == true) {
+             document.location.href="/parties/index";
+            } else {
+               document.location.href="/parties/index";
+            }
+            
 		}
     		
             }, 

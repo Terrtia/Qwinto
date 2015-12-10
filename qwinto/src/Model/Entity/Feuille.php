@@ -285,5 +285,15 @@ class Feuille extends Entity
             return 1;
     }
 
+	public function rempliecol($col){
+		$tab1 = $this->ligne0_explode();
+	        $tab2 = $this->ligne1_explode();
+       		$tab3 = $this->ligne2_explode();
+		if($tab1[$col] == "0" or $tab2[$col] == "0" or $tab3[$col] == "0"){
+			return 0;
+		}
+		return 1;
+	}
+
 
 }
