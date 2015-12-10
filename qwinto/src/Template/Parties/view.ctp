@@ -115,24 +115,6 @@
 <?= $this->Html->link(__('Change'),['action' => 'change', $party->ID]) ?>
 <?= $this->Html->link(__('ChangeCase'),['action' => 'changeCase', $party->ID]) ?>
 
-<!--<script type="text/javascript">
-    function lancer_des(de1, de2, de3) {
-        if(de1 == 1) {
-            de1val = Math.floor((6*Math.random()+1));
-            $this->set('DE_ROUGE' => de1val);
-            de1 = 0;
-            alert("dé1 = " + de1val);
-        }
-        if(de2 == 1) {
-            de2val = Math.floor(("Dé Blanc : " + 6*Math.random()+1));
-            de2 = 0;
-        }
-        if(de3 == 1) {
-            de3val = Math.floor(("Dé Rouge : " + 6*Math.random()+1));
-            de3 = 0;
-        }
-    }
-</script>-->
 
 <script type = "text/javascript">
  //   $(document).ready(function(){

@@ -124,17 +124,18 @@ class PartiesController extends AppController
     public function change(){
     $this->viewBuilder()->layout(false);
        if($this->request->is('ajax')){
+	 $party = $this->Parties->find()->where(['ID' => 2])->first();
+	
             $de1 = $this->request->data['de1'];
             $de2 = $this->request->data['de2'];
             $de3 = $this->request->data['de3'];
-            $de1val = 0;
+	$de1val = 0;
             $de2val = 0;
             $de3val = 0;
+//a remettre pour le final empeche le jouer de relancer les des
+	//if($party->DesOk()){
             if($de1 == "true"){
-		$de1val = rand(1,6);	
-		}else{
-			$de1val = 0;
-		}
+		$de1val = rand(1,6);
             if($de2 == "true"){
 		 $de2val = rand(1,6);
 		}
@@ -142,16 +143,22 @@ class PartiesController extends AppController
 		 $de3val = rand(1,6);
 		}
             
-            
-            $party = $this->Parties->find()->where(['ID' => 2])->first();
+  
+           
             $party->DE_ROUGE = $de1val;
             $party->DE_JAUNE = $de2val;
             $party->DE_VIOLET = $de3val;
             $this->Parties->save($party);
+	/**}else{
+	    $de1val = $party->DE_ROUGE ;
+            $de2val = $party->DE_JAUNE ;
+            $de3val = $party->DE_VIOLET ;
+	}**/
 
 	    $this->set('de1val',$de1val);
             $this->set('de2val',$de2val);
             $this->set('de3val',$de3val);	
+	}
         }		
     }
 

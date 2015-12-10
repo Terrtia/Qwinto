@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\AppController;
 
+
 /**
  * Parties Controller
  *
@@ -123,17 +124,17 @@ class PartiesController extends AppController
     public function change(){
     $this->viewBuilder()->layout(false);
        if($this->request->is('ajax')){
+	 $party = $this->Parties->find()->where(['ID' => 2])->first();
+	
             $de1 = $this->request->data['de1'];
             $de2 = $this->request->data['de2'];
             $de3 = $this->request->data['de3'];
-            $de1val = 0;
+	$de1val = 0;
             $de2val = 0;
             $de3val = 0;
+	if($party->DesOk()){
             if($de1 == "true"){
-		$de1val = rand(1,6);	
-		}else{
-			$de1val = 0;
-		}
+		$de1val = rand(1,6);
             if($de2 == "true"){
 		 $de2val = rand(1,6);
 		}
@@ -141,35 +142,49 @@ class PartiesController extends AppController
 		 $de3val = rand(1,6);
 		}
             
-            
-            $party = $this->Parties->find()->where(['ID' => 2])->first();
+  
+           
             $party->DE_ROUGE = $de1val;
             $party->DE_JAUNE = $de2val;
             $party->DE_VIOLET = $de3val;
             $this->Parties->save($party);
+	}else{
+	    $de1val = $party->DE_ROUGE ;
+            $de2val = $party->DE_JAUNE ;
+            $de3val = $party->DE_VIOLET ;
+	}
 
 	    $this->set('de1val',$de1val);
             $this->set('de2val',$de2val);
             $this->set('de3val',$de3val);	
+	}
         }		
     }
 
 	public function changeCase()
     {
-	
         $this->viewBuilder()->layout(false);
         if($this->request->is('ajax')){
 
             $id = $this->request->data['id'];
- 
-        $tab = id.exlode("/",$id); 
-	$party = $this->Parties->get(2, [
+        $tab = explode("/",$id); 
+	    $party = $this->Parties->get(2, [
             'contain' => ['feuilles']
         ]);
-        $feuille = $this->feuilles[0];
-        $string = $feuille->addvaleur($tab[1],$tab[2],4);
+
+	    $var = 4;
+       //$feuille = $party->feuilles[0];
+        //$feuille = $this->Feuilles->find()->first();
+        $feuille = $feuilles->find()->first();
+        $string = $feuille->addValeur(0,3,4);
+        //$string = '-1,-1,4,18,0,-2,0,0,0,0,0,0/-1,0,0,0,0,0,-2,0,0,0,0,-1/0,0,0,0,-2,0,0,0,0,0,-1,-1/';
         $feuille->TABLEAU = $string;
-        $party->Feuilles->save($feuille);
+        $this->Feuilles->save($feuille);
+	    
+       // $var = 2;
+        //$id = 12;
+        $this->set('var',$var);
+        $this->set('id',$id);
         }
     }
    
