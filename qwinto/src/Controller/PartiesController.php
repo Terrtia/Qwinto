@@ -218,12 +218,43 @@ class PartiesController extends AppController
             $string = $feuille->addValeur($ligne,$colonne,$val);
             $feuille->TABLEAU = $string;
             $feuilles->save($feuille);
-            
+	
+            $party->DE_ROUGE = 0;
+	    $party->DE_JAUNE = 0;
+	    $party->DE_VIOLET = 0;
+	     $this->Parties->save($party);
 
             $this->set('val',$val);
             $this->set('id',$id);
             $this->set('ligne',$ligne);
             $this->set('colonne',$colonne);
+        }
+    }
+
+	 public function ajoutcroix()
+    {
+        $this->viewBuilder()->layout(false);
+        if($this->request->is('ajax')){
+            $feuilles = TableRegistry::get('Feuilles');
+            $feuille = $feuilles->find()->first();
+;           
+	    $croix = $feuille->NOMBRES_CROIX +1;
+	    $feuille->NOMBRES_CROIX = $croix;
+	    $party = $this->Parties->get(2, [
+            'contain' => ['feuilles']
+        ]);
+            $party->DE_ROUGE = 0;
+	    $party->DE_JAUNE = 0;
+	    $party->DE_VIOLET = 0;
+	    $this->Parties->save($party);
+           
+
+
+            /* val est le résultat de la somme des dés, mais si on clique la case avant 
+             * de lancer les dés, les valeurs ne sont pas initialisées à 0  */
+   
+            $feuilles->save($feuille);
+            $this->set('croix',$croix);
         }
     }
    

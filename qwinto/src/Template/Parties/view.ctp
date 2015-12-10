@@ -26,11 +26,11 @@
 		$temp = 'case/1/'.$i;
                 if($tableau1[$i] == -1) echo '<td width=60 background="/Qwinto/qwinto/img/jaune.png"></td>';
                 else if($tableau1[$i] == -2) {
-                    echo '<td width=60 background="/img/pentaJaune.png" id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
+                    echo '<td width=60 background="/img/pentaJaune.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
                     if($tableau1[$i]>0) echo $tableau1[$i];
                     echo'</td>';
                 }else {
-                    echo'<td  width=60 background=/img/rondJaune.png align=center id ="'.$temp.'" onclick=affectCase("'.$temp.'")>';
+                    echo'<td  width=60 background=/img/rondJaune.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
                     if($tableau1[$i]>0)echo $tableau1[$i];  
                     echo'</td>'; 
                 };
@@ -46,11 +46,11 @@
 		$temp = 'case/2/'.$i;
                 if($tableau2[$i] == -1) echo '<td width=60 background=/Qwinto/qwinto/img/orange.png></td>';
                 else if($tableau2[$i] == -2) { 
-                    echo '<td width=60 background="/img/pentaOrange.png" id ="'.$temp.'" onclick=affectCase("'.$temp.'")>'; 
+                    echo '<td width=60 background="/img/pentaOrange.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
                     if($tableau2[$i]>0) echo $tableau2[$i];
                     echo'</td>';
                 }else {
-                    echo'<td width=60 background=/img/rondOrange.png align=center id ="'.$temp.'" onclick=affectCase("'.$temp.'")>';
+                    echo'<td width=60 background=/img/rondOrange.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
                     if($tableau2[$i]>0) echo $tableau2[$i];
                     echo'</td>';
                 };
@@ -73,6 +73,9 @@
 <br><br>
 <button id="lancerDes" onclick="lancerDes()">Lancer Dés</button>
 <br><br>
+<button onclick="ajouterCroix()">Ajouter Croix</button>
+<br><br>
+<p id ="croix">Croix : 0</p>
 
 Pénalités :  
 <div id="penalites"></p>
@@ -123,32 +126,6 @@ Pénalités :
         });
         }
 
-	function affectCase(id){
-        
-            kase = document.getElementById(id);
-            //alert(id);
-            $.ajax({
-            url:"/parties/change_case",
-            data: {
-                id: id
-            },
-            type: 'post',
-            datatype: 'json', 
-            success : function(res){ 
-	        var resultat = JSON.parse(res);
-                alert(resultat.val);
-                //var kase = document.getElementById(resultat.id);
-    		//kase[0].innerHTML = resultat.val;
-            }, 
-            error : function(result, statut, erreur){
-                console.log(result);
-            },
-            
-            complete : function(result,statut,erreur){
-
-            }
-        });
-        }
     
     function affecter(id){
             $.ajax({
@@ -160,12 +137,35 @@ Pénalités :
             datatype: 'json', 
             success : function(res){ 
 	        var resultat = JSON.parse(res);
-                //alert(resultat.id +" "+ resultat.val +" "+resultat.ligne+" "+resultat.colonne );
-		//alert("case/"+resultat.ligne+"/"+resultat.colonne);
                 var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
-		alert(kase.innerHTML);
     		kase.innerHTML = resultat.val;
-		alert(kase.innerHTML);
+                de1.setAttribute('src','/img/de0rouge.png');
+              	de2.setAttribute('src','/img/de0jaune.png');
+		de3.setAttribute('src','/img/de0orange.png');
+            }, 
+            error : function(result, statut, erreur){
+                console.log(result);
+            },
+            
+            complete : function(result,statut,erreur){
+
+            }
+        });
+        }
+
+	function ajouterCroix(){
+            $.ajax({
+            url:"/parties/ajoutcroix",
+            type: 'post',
+            datatype: 'json', 
+            success : function(res){ 
+	        var resultat = JSON.parse(res);
+		de1.setAttribute('src','/img/de0rouge.png');
+              	de2.setAttribute('src','/img/de0jaune.png');
+		de3.setAttribute('src','/img/de0orange.png');
+		var cr = document.getElementById("croix");
+    		cr.innerHTML = "Croix : "+ resultat.croix;
+    		
             }, 
             error : function(result, statut, erreur){
                 console.log(result);
