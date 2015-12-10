@@ -28,6 +28,10 @@ class FeuillesTable extends Table
         $this->displayField('ID');
         $this->primaryKey('ID');
 
+        $this->belongsTo('Parties' ,[
+                'foreignKey'=>'NUM_PARTY',
+            ]);
+
     }
 
     /**
