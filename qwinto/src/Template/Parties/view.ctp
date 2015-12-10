@@ -1,17 +1,21 @@
+
+    <!--<ul class="side-nav">
+        <li><button id="nouveau" onclick="/Qwinto/qwinto/parties/nouveau">Nouvelle partie</button></li>
+    </ul>-->
 <table width="720">
     <tr height=60>
         <td colspan=2 width=120 bgcolor = 'WHITE'>  </td>
             <?php
             for($i=2;$i<12;$i++){
 		$temp = 'case/0/'.$i;
-                if($tableau[$i] == -1) echo '<td width=60 background=/img/rouge.png></td>';
-                else if($tableau[$i] == -2) {
-                    echo '<td width=60 background="/img/pentaRouge.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
-                    if($tableau[$i]>0) echo $tableau[$i];
+                if($tableau[$i] == -1) echo '<td width=60 style="text-align:center" background=/Qwinto/qwinto/img/rouge.png></td>';
+                else if($tableau[$i] == -2 || $i == 6) {
+                    echo '<td width=60 style="text-align:center" background="/Qwinto/qwinto/img/pentaRouge.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
+                    if($tableau[$i]>0) echo '<font size="4.5"><b>'.$tableau[$i].'</b>';
                     echo'</td>';
                 }else{
-                    echo'<td width=60 background=/img/rondRouge.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
-                    if($tableau[$i]>0) echo $tableau[$i];
+                    echo'<td width=60 style="text-align:center" background=/Qwinto/qwinto/img/rondRouge.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
+                    if($tableau[$i]>0) echo '<font size="4.5"><b>'.$tableau[$i].'</b>';
                     echo'</td>';
                 };
             }
@@ -24,14 +28,14 @@
             <?php
             for($i=1;$i<11;$i++){
 		$temp = 'case/1/'.$i;
-                if($tableau1[$i] == -1) echo '<td width=60 background="/Qwinto/qwinto/img/jaune.png"></td>';
-                else if($tableau1[$i] == -2) {
-                    echo '<td width=60 background="/img/pentaJaune.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
-                    if($tableau1[$i]>0) echo $tableau1[$i];
+                if($tableau1[$i] == -1) echo '<td width=60 style="text-align:center" background="/Qwinto/qwinto/img/jaune.png"></td>';
+                else if($tableau1[$i] == -2 || $i == 5) {
+                    echo '<td width=60 style="text-align:center" background="/Qwinto/qwinto/img/pentaJaune.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
+                    if($tableau1[$i]>0) echo '<font size="4.5"><b>'.$tableau1[$i].'</b>';
                     echo'</td>';
                 }else {
-                    echo'<td  width=60 background=/img/rondJaune.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
-                    if($tableau1[$i]>0)echo $tableau1[$i];  
+                    echo'<td  width=60 style="text-align:center" background=/Qwinto/qwinto/img/rondJaune.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
+                    if($tableau1[$i]>0)echo'<font size="4.5"><b>'.$tableau1[$i].'</b>';  
                     echo'</td>'; 
                 };
             }
@@ -44,14 +48,14 @@
             <?php
             for($i=0;$i<10;$i++){
 		$temp = 'case/2/'.$i;
-                if($tableau2[$i] == -1) echo '<td width=60 background=/Qwinto/qwinto/img/orange.png></td>';
-                else if($tableau2[$i] == -2) { 
-                    echo '<td width=60 background="/img/pentaOrange.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
-                    if($tableau2[$i]>0) echo $tableau2[$i];
+                if($tableau2[$i] == -1) echo '<td width=60 style="text-align:center" background=/Qwinto/qwinto/img/orange.png></td>';
+                else if($tableau2[$i] == -2 || $i == 4) { 
+                    echo '<td width=60 style="text-align:center" background="/Qwinto/qwinto/img/pentaOrange.png" id ="'.$temp.'" onclick=affecter("'.$temp.'")>'; 
+                    if($tableau2[$i]>0) echo '<font size="4.5"><b>'.$tableau2[$i].'</b>';
                     echo'</td>';
                 }else {
-                    echo'<td width=60 background=/img/rondOrange.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
-                    if($tableau2[$i]>0) echo $tableau2[$i];
+                    echo'<td width=60 style="text-align:center" background=/Qwinto/qwinto/img/rondOrange.png align=center id ="'.$temp.'" onclick=affecter("'.$temp.'")>';
+                    if($tableau2[$i]>0) echo '<font size="4.5"><b>'.$tableau2[$i].'</b>';
                     echo'</td>';
                 };
             }
@@ -67,9 +71,9 @@
     <INPUT type="checkbox" id="checkbox3" name="de3" value="3"> Dé Orange
 </FORM>
 
-<img id="de1" src="/img/de0rouge.png"></img>
-<img id="de2" src="/img/de0jaune.png"></img>
-<img id="de3" src="/img/de0orange.png"></img>
+<img id="de1" src="/Qwinto/qwinto/img/de0rouge.png"></img>
+<img id="de2" src="/Qwinto/qwinto/img/de0jaune.png"></img>
+<img id="de3" src="/Qwinto/qwinto/img/de0orange.png"></img>
 <br><br>
 <button id="lancerDes" onclick="lancerDes()">Lancer Dés</button>
 <br><br>
@@ -85,8 +89,8 @@ Pénalités :
 
 
 
-<?= $this->Html->link(__('Change'),['action' => 'change', $party->ID]) ?>
-<?= $this->Html->link(__('ChangeCase'),['action' => 'changeCase', $party->ID]) ?>
+<!--<?= $this->Html->link(__('Change'),['action' => 'change', $party->ID]) ?>
+<?= $this->Html->link(__('ChangeCase'),['action' => 'changeCase', $party->ID]) ?>-->
 
 
 
@@ -98,7 +102,7 @@ Pénalités :
             var de3Check = document.getElementById("checkbox3").checked;
 	
             $.ajax({
-                url:"/parties/change",
+                url:"/Qwinto/qwinto/parties/change",  // ne pas oublier d'enlever /Qwinto/qwinto partout si vous lancer cake server
                 data: {
                     de1 : de1Check,
                     de2 : de2Check,
@@ -108,11 +112,11 @@ Pénalités :
             datatype: 'json', 
             success : function(res){  
                 var resultat = JSON.parse(res);
-                var srcDe1 = '/img/de'+ resultat.d1 +'rouge.png'
+                var srcDe1 = '/Qwinto/qwinto/img/de'+ resultat.d1 +'rouge.png'
                 de1.setAttribute('src',srcDe1);
-                var srcDe2 = '/img/de'+ resultat.d2 +'jaune.png'
+                var srcDe2 = '/Qwinto/qwinto/img/de'+ resultat.d2 +'jaune.png'
                 de2.setAttribute('src',srcDe2);
-                var srcDe3 = '/img/de'+ resultat.d3 +'orange.png'
+                var srcDe3 = '/Qwinto/qwinto/img/de'+ resultat.d3 +'orange.png'
                 de3.setAttribute('src',srcDe3);
             }, 
 
@@ -129,7 +133,7 @@ Pénalités :
     
     function affecter(id){
             $.ajax({
-            url:"/parties/modifcase",
+            url:"/Qwinto/qwinto/parties/modifcase", // ne pas oublier d'enlever /Qwinto/qwinto partout si vous lancer cake server
             data: {
                 id: id
             },
@@ -142,9 +146,9 @@ Pénalités :
 		}
                 var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
     		kase.innerHTML = resultat.val;
-                de1.setAttribute('src','/img/de0rouge.png');
-              	de2.setAttribute('src','/img/de0jaune.png');
-		de3.setAttribute('src','/img/de0orange.png');
+                de1.setAttribute('src','/Qwinto/qwinto/img/de0rouge.png');
+              	de2.setAttribute('src','/Qwinto/qwinto/img/de0jaune.png');
+		de3.setAttribute('src','/Qwinto/qwinto/img/de0orange.png');
             }, 
             error : function(result, statut, erreur){
                 console.log(result);
@@ -158,20 +162,25 @@ Pénalités :
 
 	function ajouterCroix(){
             $.ajax({
-            url:"/parties/ajoutcroix",
+            url:"/Qwinto/qwinto/parties/ajoutcroix",    // ne pas oublier d'enlever /Qwinto/qwinto partout si vous lancer cake server
             type: 'post',
             datatype: 'json', 
             success : function(res){ 
 	        var resultat = JSON.parse(res);
 		
-		de1.setAttribute('src','/img/de0rouge.png');
-              	de2.setAttribute('src','/img/de0jaune.png');
-		de3.setAttribute('src','/img/de0orange.png');
+		de1.setAttribute('src','/Qwinto/qwinto/img/de0rouge.png');
+              	de2.setAttribute('src','/Qwinto/qwinto/img/de0jaune.png');
+		de3.setAttribute('src','/Qwinto/qwinto/img/de0orange.png');
 		var cr = document.getElementById("croix");
     		cr.innerHTML = "Croix : "+ resultat.croix;
 		if(resultat.end==1){
-			alert("C'est la fin...");
-			window.location;
+            var r = confirm("C'est perdu ...");
+            if (r == true) {
+             document.location.href="/Qwinto/qwinto/parties/index";
+            } else {
+               document.location.href="/Qwinto/qwinto/parties/index";
+            }
+            
 		}
     		
             }, 
