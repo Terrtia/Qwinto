@@ -108,10 +108,10 @@
 ?>
 <script type="text/javascript">
 //$(document).ready(function(){
-        function change_val(id, numLigne, numCase){
+        function changerValCase(id, numLigne, numCase){
             var val = prompt("Quel est la valeur?");
             $.ajax({
-                url:"feuilles/changeCase",
+                url:"feuilles/changerVal",
                 data: {
                     id: id,
                     noLigne: numLigne,

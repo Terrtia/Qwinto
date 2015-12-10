@@ -28,6 +28,7 @@ class Party extends Entity
     protected $_accessible = [
         '*' => true,
         'ID' => false,
+        'VAL' => 0,
     ];
 
 	public function DesOk(){

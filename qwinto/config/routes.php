@@ -51,6 +51,9 @@ Router::scope('/', function ($routes) {
 
     
     $routes->connect('/change', ['controller' => 'parties', 'action' => 'change']);
+    $routes->connect('/modifcase', ['controller' => 'parties', 'action' => 'modifcase']);
+    
+    $routes->connect('/change_case', ['controller' => 'parties', 'action' => 'change_case']);
         
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
