@@ -177,7 +177,7 @@ class PartiesController extends AppController
             //$feuille = $this->Feuilles->find()->first();
             $feuille = $feuilles->find()->first();
             $string = $feuille->addValeur(0,3,4);
-            //$string = '-1,-1,4,18,0,-2,0,0,0,0,0,0/-1,0,0,0,0,0,-2,0,0,0,0,-1/0,0,0,0,-2,0,0,0,0,0,-1,-1/';
+            //$string = '-1,-1,0,0,0,-2,0,0,0,0,0,0/-1,0,0,0,0,0,-2,0,0,0,0,-1/0,0,0,0,-2,0,0,0,0,0,-1,-1/';
             $feuille->TABLEAU = $string;
             $this->Feuilles->save($feuille);
 
@@ -222,12 +222,17 @@ class PartiesController extends AppController
 	            $this->Parties->save($party);
 		
 		$end = $feuille->end();
+                
+                /* marche pas */
+                //$score = 0;
+                //if($end == 1) $score = $feuille->score();
 
                 $this->set('val',$val);
                 $this->set('id',$id);
                 $this->set('ligne',$ligne);
                 $this->set('colonne',$colonne);
 		$this->set('end',$end);
+		$this->set('score',$score);
           //  }
         }
     }
@@ -256,8 +261,13 @@ class PartiesController extends AppController
    
             $feuilles->save($feuille);
 	    $end = $feuille->end();
+            /* marche pas et bloque l'ajax, mais incrémente les croix sans les afficher */
+            $score = 0;
+            if($end == 1) $score = $feuille->score();
+            
             $this->set('croix',$croix);
 	    $this->set('end',$end);
+            $this->set('score',$score);
         }
     }
 

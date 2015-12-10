@@ -213,6 +213,15 @@ class Feuille extends Entity
         
         public function score() {
             $score = "";
+            $scoreLigne0 = 0;
+            $scoreLigne1 = 0;
+            $scoreLigne2 = 0;
+            $scorePent0 = 0;
+            $scorePent1 = 0;
+            $scorePent2 = 0;
+            $scorePent3 = 0;
+            $penalites = 0;
+            $resultat = 0;
             
             /* score ligne 1 */
             if($this->remplie(0)) $scoreLigne0 = $this->getValeur(0, 11);
@@ -227,12 +236,25 @@ class Feuille extends Entity
             else $scoreLigne2 = $this->getNbValeurs($ligne);
             
             /* score pentagones */
-            if($this->remplieColonne(3)) $scorePent0 = $this->getValeur (0, 3);
-            if($this->remplieColonne(8)) $scorePent1 = $this->getValeur (1, 8);
-            if($this->remplieColonne(2)) $scorePent2 = $this->getValeur (2, 2);
-            if($this->remplieColonne(9)) $scorePent3 = $this->getValeur (2, 9);
+            if($this->rempliecol(3)) $scorePent0 = $this->getValeur (0, 3);
+            if($this->rempliecol(8)) $scorePent1 = $this->getValeur (1, 8);
+            if($this->rempliecol(2)) $scorePent2 = $this->getValeur (2, 2);
+            if($this->rempliecol(9)) $scorePent3 = $this->getValeur (2, 9);
             
-            return $score;
+            /* penalités */
+            $penalites = 5* $this->NOMBRES_CROIX;
+            
+            /* résultat total */
+            $resultat = $scoreLigne0 + $scoreLigne1 + $scoreLigne2 + $scorePent0 + $scorePent1 +
+                    $scorePent2 + $scorePent3 - $penalites;
+            
+            /* JSON ne veut pas retourner le score sous la forme de chaine de caractères p-ê... */
+            $score = $scoreLigne0 . " + " + $scoreLigne1 . " + " + $scoreLigne2 . " + " .
+                    $scorePent0 . " + " . $scorePent1 . " + " . $scorePent2 . " + " .
+                    $scorePent3 . " - " . $penalites . " = " . $res;  
+            
+            /* je retourne l'entier au lieu de la chaîne */
+            return $resultat;
         }
 
     public function getValeur($ligne, $colonne) {
