@@ -135,9 +135,9 @@
                     alert("Score = " + resultat.score);
                     var r = confirm("C'est gagné");
                     if (r == true) {
-                        document.location.href="/parties/index";
+                        document.location.href="/parties/view/2";
                     } else {
-                        document.location.href="/parties/index";
+                        document.location.href="/parties/view/2";
                     }
 		}
                 var kase = document.getElementById("case/"+resultat.ligne+"/"+resultat.colonne);
@@ -173,9 +173,9 @@
                     alert("Score = " + resultat.score);
                     var r = confirm("C'est perdu ...");
                     if (r == true) {
-                     document.location.href="/parties/index";
+                     document.location.href="/parties/view/2";
                     } else {
-                       document.location.href="/parties/index";
+                       document.location.href="/parties/view/2";
                     }
 		}
     		

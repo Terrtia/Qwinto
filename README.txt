@@ -4,7 +4,7 @@ Groupe : Anais Decolle, Aurelien Thirion, Axel Ferrari, Brice Peters
 2 - se placer dans Qwinto/qwinto (cd)
 3 - bin/cake server
 4 - dans le navigateur : localhost:8765/parties/view/2
-5 - après la redirection de fin de partie, cliquer sur View pour rejouer
+5 - jouer
 
 Partie solo :
 sélection des dés et Lancer Dés
