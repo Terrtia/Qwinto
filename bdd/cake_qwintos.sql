@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 04 Décembre 2015 à 21:25
+-- Généré le: Ven 11 Décembre 2015 à 14:14
 -- Version du serveur: 5.5.46-0ubuntu0.14.04.2
 -- Version de PHP: 5.5.9-1ubuntu4.14
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `feuilles` (
 --
 
 INSERT INTO `feuilles` (`ID`, `NOMBRES_CROIX`, `TABLEAU`, `NUM_PARTY`, `LOGIN`, `PASSWORD`) VALUES
-(2, 0, '-1,-1, 0,0,0,-1,0,0,0,0,0,0/-1,0,0,0,0,0,-1,0,0,0,0,-1/0,0,0,0,-1,0,0,0,0,0,-1,-1', 2, 'test', 'secret');
+(2, 0, '-1,-1,0,-2,0,-1,0,-2,0,0,0,0/-1,0,0,0,0,0,-1,0,-2,0,0,-1/0,0,-2,0,-1,0,0,0,0,-2,-1,-1/', 2, 'test', 'secret');
 
 -- --------------------------------------------------------
 
